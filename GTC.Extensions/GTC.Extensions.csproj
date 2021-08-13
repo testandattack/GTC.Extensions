@@ -2,6 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Geoff Gray</Authors>
+    <Description>A simple collection of extension methods for common C# objects</Description>
+    <PackageTags />
+    <PackageProjectUrl>https://github.com/testandattack/GTC.Extensions</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
+    <PackageId>TestAndAttack.Extensions</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
