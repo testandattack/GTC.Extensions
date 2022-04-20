@@ -168,6 +168,17 @@ namespace GTC.Extensions
             string newStr = str.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
             return newStr.Shortened(maxLen);
         }
+
+        // Need to test and validate
+        public static string FileNameWithoutPath(this string source)
+        {
+            int iStart = source.LastIndexOf("\\");
+
+            if (iStart == -1 || iStart + 1 >= source.Length)
+                return source;
+            else
+                return source.Substring(iStart + 1);
+        }
         #endregion
 
         #region -- Returns lists etc -----
@@ -250,6 +261,82 @@ namespace GTC.Extensions
         }
         #endregion
 
+        #region -- CSV Stuff -----
+        public static string[] SplitCsvRowToArray(this string source, bool escapeSingleQuotes = false)
+        {
+            List<string> result = new List<string>();
+            StringBuilder currentStr = new StringBuilder("");
+            bool inQuotes = false;
+            for (int i = 0; i < source.Length; i++) // For each character
+            {
+                if (source[i] == '\"') // Quotes are closing or opening
+                    inQuotes = !inQuotes;
+                else if (source[i] == ',') // Comma
+                {
+                    if (!inQuotes) // If not in quotes, end of current string, add it to result
+                    {
+                        if (currentStr.Length == 0)
+                        {
+                            result.Add("null");
+                        }
+                        else
+                        {
+                            result.Add(currentStr.ToString());
+                        }
+                        currentStr.Clear();
+                    }
+                    else
+                        currentStr.Append(source[i]); // If in quotes, just add it 
+                }
+                else if (source[i] == '\'' && escapeSingleQuotes) // If we need to escape single quotes, do it here
+                {
+                    currentStr.Append("''");
+                }
+                else // Add any other character to current string
+                    currentStr.Append(source[i]);
+            }
+            result.Add(currentStr.ToString());
+            return result.ToArray(); // Return array of all strings
+        }
+
+        public static List<string> SplitCsvRowToList(this string source, bool escapeSingleQuotes = false)
+        {
+            List<string> result = new List<string>();
+            StringBuilder currentStr = new StringBuilder("");
+            bool inQuotes = false;
+            for (int i = 0; i < source.Length; i++) // For each character
+            {
+                if (source[i] == '\"') // Quotes are closing or opening
+                    inQuotes = !inQuotes;
+                else if (source[i] == ',') // Comma
+                {
+                    if (!inQuotes) // If not in quotes, end of current string, add it to result
+                    {
+                        if (currentStr.Length == 0)
+                        {
+                            result.Add("null");
+                        }
+                        else
+                        {
+                            result.Add(currentStr.ToString());
+                        }
+                        currentStr.Clear();
+                    }
+                    else
+                        currentStr.Append(source[i]); // If in quotes, just add it 
+                }
+                else if (source[i] == '\'' && escapeSingleQuotes) // If we need to escape single quotes, do it here
+                {
+                    currentStr.Append("''");
+                }
+                else // Add any other character to current string
+                    currentStr.Append(source[i]);
+            }
+            result.Add(currentStr.ToString());
+            return result;
+        }
+        #endregion
+
         #region -- modifiers -----
         public static string RemoveQuoteEscapes(this String str)
         {
@@ -310,9 +397,9 @@ namespace GTC.Extensions
         {
             if (string.IsNullOrEmpty(value)) return value;
 
-            var cameCasedParts = value.Split('.').Select(part => char.ToLowerInvariant(part[0]) + part.Substring(1));
+            var camelCasedParts = value.Split('.').Select(part => char.ToLowerInvariant(part[0]) + part.Substring(1));
 
-            return string.Join(".", cameCasedParts);
+            return string.Join(".", camelCasedParts);
         }
         #endregion
 

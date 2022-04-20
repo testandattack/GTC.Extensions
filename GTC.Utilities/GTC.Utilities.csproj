@@ -3,18 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Geoff Gray</Authors>
-    <Description>A simple collection of extension methods for common C# objects</Description>
+    <Description>A collection of utility methods for common C# objects</Description>
     <PackageTags />
     <PackageProjectUrl>https://github.com/testandattack/GTC.Extensions</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
-    <PackageId>TestAndAttack.Extensions</PackageId>
-    <Version>1.1.0</Version>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageId>TestAndAttack.Utilities</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
     <PackageReference Include="Serilog" Version="2.10.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GTC.Extensions\GTC.Extensions.csproj" />
   </ItemGroup>
 
 </Project>
