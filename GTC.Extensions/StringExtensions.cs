@@ -168,6 +168,17 @@ namespace GTC.Extensions
             string newStr = str.Replace("\r\n", "").Replace("\r", "").Replace("\n", "");
             return newStr.Shortened(maxLen);
         }
+
+        // Need to test and validate
+        public static string FileNameWithoutPath(this string source)
+        {
+            int iStart = source.LastIndexOf("\\");
+
+            if (iStart == -1 || iStart + 1 >= source.Length)
+                return source;
+            else
+                return source.Substring(iStart + 1);
+        }
         #endregion
 
         #region -- Returns lists etc -----
@@ -248,7 +259,9 @@ namespace GTC.Extensions
             stream.Position = 0;
             return stream;
         }
+        #endregion
 
+        #region -- CSV Stuff -----
         public static string[] SplitCsvRowToArray(this string source, bool escapeSingleQuotes = false)
         {
             List<string> result = new List<string>();
@@ -384,9 +397,9 @@ namespace GTC.Extensions
         {
             if (string.IsNullOrEmpty(value)) return value;
 
-            var cameCasedParts = value.Split('.').Select(part => char.ToLowerInvariant(part[0]) + part.Substring(1));
+            var camelCasedParts = value.Split('.').Select(part => char.ToLowerInvariant(part[0]) + part.Substring(1));
 
-            return string.Join(".", cameCasedParts);
+            return string.Join(".", camelCasedParts);
         }
         #endregion
 

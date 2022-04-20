@@ -4,6 +4,7 @@ using System.Data;
 using System.Text;
 using System.Linq;
 using Serilog;
+using System.IO;
 
 namespace GTC.Extensions
 {
@@ -109,6 +110,60 @@ namespace GTC.Extensions
                     .Error(ex, "AddTableData threw an exception after adding {numRows} rows of data.", numAdded);
             }
             return numAdded;
+        }
+
+        // Need to test and validate
+        public static List<string> GetRowValuesAsStringList(this DataTable table, string separator = "")
+        {
+            List<string> list = new List<string>();
+            foreach (DataRow row in table.Rows)
+            {
+                StringBuilder sb = new StringBuilder();
+                //list.Add($"{row[0]}{separator}{row[1]}");
+                for (int x = 0; x < row.ItemArray.Length; x++)
+                {
+                    sb.Append($"{row.ItemArray[x].ToString()}{separator}");
+                }
+                if (sb.Length > 0)
+                    sb.Remove(sb.Length - 1, 1);
+                list.Add(sb.ToString());
+            }
+            return list;
+        }
+
+        // Need to test and validate
+        public static string GetRowValuesAsSingleString(this DataTable table, string columnSeparator = "", string rowSeparator = "\r\n")
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (DataRow row in table.Rows)
+            {
+                for (int x = 0; x < row.ItemArray.Length; x++)
+                {
+                    sb.Append($"{row.ItemArray[x].ToString()}{columnSeparator}");
+                }
+                if (sb.Length > 0)
+                    sb.Remove(sb.Length - 1, 1);
+                sb.Append(rowSeparator);
+            }
+            return sb.ToString();
+        }
+
+        // Need to test and validate
+        public static void SaveTableAsCsvFile(this DataTable table, string fileName)
+        {
+            using (StreamWriter sw = new StreamWriter(fileName, false))
+            {
+                StringBuilder sb = new StringBuilder();
+                foreach (DataColumn column in table.Columns)
+                {
+                    sb.Append($"{column.ColumnName},");
+                }
+                if (sb.Length > 0)
+                    sb.Remove(sb.Length - 1, 1);
+                sw.WriteLine(sb.ToString());
+
+                sw.Write(table.GetRowValuesAsSingleString(",", "\r\n"));
+            }
         }
     }
 }

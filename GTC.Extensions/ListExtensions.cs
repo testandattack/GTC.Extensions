@@ -67,6 +67,8 @@ namespace GTC.Extensions
         }
         #endregion
 
+
+        #region -- CSV Stuff -----
         public static string JoinAsCsv(this string[] items)
         {
             StringBuilder sb = new StringBuilder();
@@ -84,6 +86,25 @@ namespace GTC.Extensions
             sb.Remove(sb.Length - 1, 1);
             return sb.ToString();
         }
+
+        public static string JoinAsCsv(this List<string> items)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int x = 0; x < items.Count; x++)
+            {
+                if (items[x].Contains(","))
+                {
+                    sb.Append($"\"{items[x]}\",");
+                }
+                else
+                {
+                    sb.Append($"{items[x]},");
+                }
+            }
+            sb.Remove(sb.Length - 1, 1);
+            return sb.ToString();
+        }
+        #endregion
 
         public static bool AddUnique(this List<string> source, string itemToAdd)
         {
