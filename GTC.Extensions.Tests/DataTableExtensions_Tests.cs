@@ -68,12 +68,12 @@ namespace GTC.Extensions.Test
             });
 
 
-            Add(myData.dataTable, "IntColumn", 0, new List<string>
+            Add(myData.dataTable, "IntColumn", 2, new List<string>
             {
-                "column1Value1",
-                "column1Value2",
-                "column1Value3",
-                "column1Value4"
+                "1",
+                "10",
+                "100",
+                "23"
             });
         }
     }
@@ -88,15 +88,15 @@ namespace GTC.Extensions.Test
                 1,
                 10,
                 100,
-                3
+                23
             };
 
             List<object> returnList2 = new List<object>
             {
                 new MyObject(""),
-                new MyObject("ValueValue"),
+                new MyObject("Value"),
                 new MyObject(""),
-                null
+                new MyObject()
             };
             // Test column 3
             Add(myData.dataTable, "IntColumn", 2, returnList1);
@@ -121,7 +121,7 @@ namespace GTC.Extensions.Test
             dataTable.Rows.Add("column1Value1", "column2Value1", 1, new MyObject(""));
             dataTable.Rows.Add("column1Value2", "column2Value2", 10, new MyObject("Value"));
             dataTable.Rows.Add("column1Value3", "column2Value3", 100, new MyObject(""));
-            dataTable.Rows.Add("column1Value4", "column2Value4", 23);
+            dataTable.Rows.Add("column1Value4", "column2Value4", 23, new MyObject());
         }
     }
 
