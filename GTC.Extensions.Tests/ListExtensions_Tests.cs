@@ -1,3 +1,4 @@
+using LoggingOutputHelper;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -20,7 +21,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\ListExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
 
             stringOfValues = new List<string>() {"Value1","Value2","Value3"};
             intOfValues = new List<int>() { 1, 2, 3 };

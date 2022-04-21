@@ -8,6 +8,7 @@ using Xunit.Abstractions;
 using System.Linq;
 using System.Text;
 using System.IO;
+using LoggingOutputHelper;
 
 namespace GTC.Extensions.Test
 {
@@ -24,7 +25,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\ListExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
         }
 
         #region -- FindSubString -----

@@ -5,6 +5,7 @@ using System.Threading;
 using System.Collections.Generic;
 using Serilog;
 using Xunit.Abstractions;
+using LoggingOutputHelper;
 
 namespace GTC.Extensions.Test
 {
@@ -20,7 +21,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\DictionaryExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
         }
 
         [Theory]
