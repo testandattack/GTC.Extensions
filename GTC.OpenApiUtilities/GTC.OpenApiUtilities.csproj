@@ -1,14 +1,14 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <Authors>Geoff Gray</Authors>
-    <Description>A collection of utility methods for common C# objects</Description>
+    <Description>A collection of utility methods for OpenApi Specification objects</Description>
     <PackageTags />
     <PackageProjectUrl>https://github.com/testandattack/GTC.Extensions</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
-    <PackageId>TestAndAttack.Utilities</PackageId>
+    <PackageId>TestAndAttack.OpenApiUtilities</PackageId>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
