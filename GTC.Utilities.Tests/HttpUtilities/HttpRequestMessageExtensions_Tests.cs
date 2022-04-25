@@ -81,7 +81,7 @@ namespace GTC.Utilities.Tests.HttpUtilities
             var testRequests = new BuildTestRequests();
 
             Add(testRequests.BuildMessageWithNoContent(), noContentValue);
-            Add(testRequests.BuildMessageWithStringContent(), stringValue);
+            Add(testRequests.BuildMessageWithStringContent(stringValue), stringValue);
             Add(testRequests.BuildMessageWithMultiPartFormContent(), multiPartFormValue);
             Add(testRequests.BuildMessageWithByteArrayContent(), byteArrayValue);
             Add(testRequests.BuildMessageWithFormUrlEncodedContent(), formUrlEncodedValue);
@@ -91,7 +91,7 @@ namespace GTC.Utilities.Tests.HttpUtilities
     public class TestDataForGetContentHeaders : TheoryData<HttpRequestMessage, Dictionary<string, string>>
     {
         private Dictionary<string, string> noContentValue = null;
-        private Dictionary<string, string> stringValue = new Dictionary<string, string>() { { "Content-Type", "" } };
+        private Dictionary<string, string> stringValue = new Dictionary<string, string>() { { "Content-Type", "application/json; charset=utf-8" } };
         private Dictionary<string, string> multiPartFormValue = new Dictionary<string, string>() { { "Content-Type", "multipart/form-data; boundary=\"MadeUpBoundary\"" } };
         private Dictionary<string, string> byteArrayValue = new Dictionary<string, string>();
         private Dictionary<string, string> formUrlEncodedValue = new Dictionary<string, string>() { { "Content-Type", "application/x-www-form-urlencoded" } }; 
@@ -101,7 +101,7 @@ namespace GTC.Utilities.Tests.HttpUtilities
             var testRequests = new BuildTestRequests();
 
             Add(testRequests.BuildMessageWithNoContent(), noContentValue);
-            Add(testRequests.BuildMessageWithStringContent(), stringValue);
+            Add(testRequests.BuildMessageWithStringContent("Some made up string content"), stringValue);
             Add(testRequests.BuildMessageWithMultiPartFormContent(), multiPartFormValue);
             Add(testRequests.BuildMessageWithByteArrayContent(), byteArrayValue);
             Add(testRequests.BuildMessageWithFormUrlEncodedContent(), formUrlEncodedValue);
@@ -125,7 +125,7 @@ namespace GTC.Utilities.Tests.HttpUtilities
             var testRequests = new BuildTestRequests();
 
             Add(testRequests.BuildMessageWithNoContent(), noContentValue);
-            Add(testRequests.BuildMessageWithStringContent(), stringValue);
+            Add(testRequests.BuildMessageWithStringContent("Some made up string content"), stringValue);
             Add(testRequests.BuildMessageWithMultiPartFormContent(), multiPartFormValue);
             Add(testRequests.BuildMessageWithByteArrayContent(), byteArrayValue);
             Add(testRequests.BuildMessageWithFormUrlEncodedContent(), formUrlEncodedValue);
@@ -140,10 +140,10 @@ namespace GTC.Utilities.Tests.HttpUtilities
             return messageWithNoContent;
         }
 
-        public HttpRequestMessage BuildMessageWithStringContent()
+        public HttpRequestMessage BuildMessageWithStringContent(string stringValue)
         {
             HttpRequestMessage messageWithStringContent = new HttpRequestMessage(HttpMethod.Get, "http://localhost");
-            messageWithStringContent.Content = new StringContent("Some String value", Encoding.UTF8, "application/json");
+            messageWithStringContent.Content = new StringContent(stringValue, Encoding.UTF8, "application/json");
             return messageWithStringContent;
         }
 

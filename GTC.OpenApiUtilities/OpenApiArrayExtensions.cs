@@ -15,6 +15,5 @@ namespace GTC.OpenApiUtilities
             }
             return sb.Remove(sb.Length - 1, 1).ToString();
         }
-
     }
 }
