@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Geoff Gray</Authors>
+    <Description>A collection of utility methods for common C# objects</Description>
+    <PackageTags />
+    <PackageProjectUrl>https://github.com/testandattack/GTC.Extensions</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
+    <PackageId>TestAndAttack.Utilities</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GTC.Extensions\GTC.Extensions.csproj" />
+  </ItemGroup>
+
+</Project>

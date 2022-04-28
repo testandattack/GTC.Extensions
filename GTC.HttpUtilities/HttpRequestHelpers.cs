@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 
-namespace GTC.Utilities.HttpUtilities
+namespace GTC.HttpUtilities
 {
     public static class HttpRequestHelpers
     {

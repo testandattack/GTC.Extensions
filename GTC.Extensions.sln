@@ -14,17 +14,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.Utilities", "GTC.Utilities\GTC.Utilities.csproj", "{F51F2A45-27E1-41F8-8A3A-8421134CD420}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotReadyToPublish", "NotReadyToPublish\NotReadyToPublish.csproj", "{CC94545B-4AC1-4B51-BD0A-24D21D5FDD51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotReadyToPublish", "NotReadyToPublish\NotReadyToPublish.csproj", "{CC94545B-4AC1-4B51-BD0A-24D21D5FDD51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTC.Utilities.Tests", "GTC.Utilities.Tests\GTC.Utilities.Tests.csproj", "{692C20D7-87D7-43C9-A932-34613FD27377}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.Utilities.Tests", "GTC.Utilities.Tests\GTC.Utilities.Tests.csproj", "{692C20D7-87D7-43C9-A932-34613FD27377}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggingOutputHelper", "LoggingOutputHelper\LoggingOutputHelper.csproj", "{C9033905-97FC-4274-8E91-08540FAB53F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggingOutputHelper", "LoggingOutputHelper\LoggingOutputHelper.csproj", "{C9033905-97FC-4274-8E91-08540FAB53F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xUnitTestingExample", "xUnitTestingExample\xUnitTestingExample.csproj", "{0BFFDEF5-C6A3-40AB-A200-7AC30297D798}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xUnitTestingExample", "xUnitTestingExample\xUnitTestingExample.csproj", "{0BFFDEF5-C6A3-40AB-A200-7AC30297D798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTC.OpenApiUtilities", "GTC.OpenApiUtilities\GTC.OpenApiUtilities.csproj", "{C458BD16-DA04-4DB5-98F9-467F305A2EED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.OpenApiUtilities", "GTC.OpenApiUtilities\GTC.OpenApiUtilities.csproj", "{C458BD16-DA04-4DB5-98F9-467F305A2EED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GTC.OpenApiUtilities.Test", "GTC.OpenApiUtilities.Test\GTC.OpenApiUtilities.Test.csproj", "{FBC64F18-0EE3-4633-AED1-70409A795AF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.OpenApiUtilities.Test", "GTC.OpenApiUtilities.Test\GTC.OpenApiUtilities.Test.csproj", "{FBC64F18-0EE3-4633-AED1-70409A795AF1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.HttpUtilities", "GTC.HttpUtilities\GTC.HttpUtilities.csproj", "{43F7235D-F7A9-4D58-9DFE-ED37F6C171BA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GTC.HttpUtilities.Tests", "GTC.HttpUtilities.Tests\GTC.HttpUtilities.Tests.csproj", "{612906A7-080F-44D6-866E-021C7B598B68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -68,6 +72,14 @@ Global
 		{FBC64F18-0EE3-4633-AED1-70409A795AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FBC64F18-0EE3-4633-AED1-70409A795AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FBC64F18-0EE3-4633-AED1-70409A795AF1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43F7235D-F7A9-4D58-9DFE-ED37F6C171BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43F7235D-F7A9-4D58-9DFE-ED37F6C171BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43F7235D-F7A9-4D58-9DFE-ED37F6C171BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43F7235D-F7A9-4D58-9DFE-ED37F6C171BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{612906A7-080F-44D6-866E-021C7B598B68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{612906A7-080F-44D6-866E-021C7B598B68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{612906A7-080F-44D6-866E-021C7B598B68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{612906A7-080F-44D6-866E-021C7B598B68}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

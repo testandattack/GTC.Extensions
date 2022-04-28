@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace GTC.Utilities.HttpUtilities
+namespace GTC.HttpUtilities
 {
     public static class HttpResponseCodeGroups
     {

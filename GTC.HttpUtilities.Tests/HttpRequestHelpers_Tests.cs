@@ -1,15 +1,9 @@
-﻿using GTC.Utilities.HttpUtilities;
-using GTC.Utilities.Test;
-using LoggingOutputHelper;
-using System;
-using System.Collections.Generic;
-using System.Net;
+﻿using LoggingOutputHelper;
 using System.Net.Http;
-using System.Text;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace GTC.Utilities.Tests.HttpUtilities
+namespace GTC.HttpUtilities.Tests
 {
     // https://andrewlock.net/creating-strongly-typed-xunit-theory-test-data-with-theorydata/
 

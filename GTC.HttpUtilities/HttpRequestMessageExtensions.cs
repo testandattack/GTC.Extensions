@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using GTC.Extensions;
 
-namespace GTC.Utilities.HttpUtilities
+namespace GTC.HttpUtilities
 {
     public static class HttpRequestMessageExtensions
     {
