@@ -52,6 +52,28 @@ namespace GTC.Extensions.Test
             Assert.Equal(numEntriesInDictionary, sampleDictionary.Count);
             Assert.Equal(sampleDictionary[sKey], expectedValueForGivenKey);
         }
+
+        [Theory]
+        [ClassData(typeof(TestDataForGetKeyValue_IEnumerable))]
+        public void DictionaryExtensions_GetKey_GetValue_IEnumerable_Test(Dictionary<string, IEnumerable<string>> source, int iIndex, string expectedKey, string expectedValue)
+        {
+            string actualKey = source.GetKey(iIndex);
+            Assert.Equal(expectedKey, actualKey);
+
+            string actualValue = source.GetValue(iIndex);
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        [Theory]
+        [ClassData(typeof(TestDataForGetKeyValue_String))]
+        public void DictionaryExtensions_GetKey_GetValue_String_Test(Dictionary<string, string> source, int iIndex, string expectedKey, string expectedValue)
+        {
+            string actualKey = source.GetKey(iIndex);
+            Assert.Equal(expectedKey, actualKey);
+
+            string actualValue = source.GetValue(iIndex);
+            Assert.Equal(expectedValue, actualValue);
+        }
     }
 
     #region -- TheoryData -----
@@ -114,6 +136,38 @@ namespace GTC.Extensions.Test
 
             // Dictionary does contain value
             Add(dictionaryOfValues, "Key1", "Item1");
+        }
+    }
+
+    public class TestDataForGetKeyValue_IEnumerable : TheoryData<Dictionary<string, IEnumerable<string>>, int, string, string>
+    {
+        public TestDataForGetKeyValue_IEnumerable()
+        {
+            Dictionary<string, IEnumerable<string>> dictionary = new Dictionary<string, IEnumerable<string>>
+            {
+                { "Key1", new List<string> { "Value1a", "Value1b" } },
+                { "Key2", new List<string> { "Value2a", "Value2b" } }
+            };
+
+            Add(dictionary, 0, "Key1", "Value1a;Value1b");
+            Add(dictionary, 1, "Key2", "Value2a;Value2b");
+            Add(dictionary, 2, string.Empty, string.Empty);
+        }
+    }
+
+    public class TestDataForGetKeyValue_String : TheoryData<Dictionary<string, string>, int, string, string>
+    {
+        public TestDataForGetKeyValue_String()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>
+            {
+                { "Key1", "Value1" },
+                { "Key2", "Value2" },
+            };
+
+            Add(dictionary, 0, "Key1", "Value1");
+            Add(dictionary, 1, "Key2", "Value2");
+            Add(dictionary, 2, string.Empty, string.Empty);
         }
     }
     #endregion
