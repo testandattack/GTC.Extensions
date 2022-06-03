@@ -1,3 +1,4 @@
+using LoggingOutputHelper;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -20,7 +21,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\ListExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
 
             stringOfValues = new List<string>() {"Value1","Value2","Value3"};
             intOfValues = new List<int>() { 1, 2, 3 };
@@ -75,6 +76,14 @@ namespace GTC.Extensions.Test
                 Assert.Equal(intOfValues.Select(i => i).ToString(separator, addSpace), finalString);
             }
         }
+
+        [Theory]
+        [ClassData(typeof(TestDataForGetNextString))]
+        public void ListExtensions_GetNextString_Test(List<string> sampleList, string currentString, string expectedResult)
+        {
+            string actualResult = sampleList.GetNextString(currentString);
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 
     #region -- TheoryData -----
@@ -101,6 +110,21 @@ namespace GTC.Extensions.Test
 
             // string does contain value
             Add(stringOfValues, "Value4", 4);
+        }
+    }
+
+    public class TestDataForGetNextString : TheoryData<List<string>, string, string>
+    {
+        public TestDataForGetNextString()
+        {
+            List<string> stringOfValues = new List<string>();
+            stringOfValues.Add("Value1");
+            stringOfValues.Add("Value2");
+            stringOfValues.Add("Value3");
+
+            Add(stringOfValues, "Value2", "Value3");
+            Add(stringOfValues, "Value3", string.Empty);
+            Add(stringOfValues, "Value5", string.Empty);
         }
     }
     #endregion

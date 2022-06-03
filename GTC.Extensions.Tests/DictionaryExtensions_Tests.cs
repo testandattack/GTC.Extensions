@@ -5,6 +5,7 @@ using System.Threading;
 using System.Collections.Generic;
 using Serilog;
 using Xunit.Abstractions;
+using LoggingOutputHelper;
 
 namespace GTC.Extensions.Test
 {
@@ -20,7 +21,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\DictionaryExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
         }
 
         [Theory]
@@ -51,6 +52,41 @@ namespace GTC.Extensions.Test
             Assert.Equal(numEntriesInDictionary, sampleDictionary.Count);
             Assert.Equal(sampleDictionary[sKey], expectedValueForGivenKey);
         }
+
+        [Theory]
+        [ClassData(typeof(TestDataForAsString))]
+        public void DictionaryExtensions_AsString_Test(Dictionary<string, string> sampleDictionary, string entrySeparator, string kvpSeparator, string expectedResult)
+        {
+            string actualResult;
+            if (entrySeparator == "")
+                actualResult = sampleDictionary.AsString();
+            else
+                actualResult = sampleDictionary.AsString(entrySeparator, kvpSeparator);
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        [Theory]
+        [ClassData(typeof(TestDataForGetKeyValue_IEnumerable))]
+        public void DictionaryExtensions_GetKey_GetValue_IEnumerable_Test(Dictionary<string, IEnumerable<string>> source, int iIndex, string expectedKey, string expectedValue)
+        {
+            string actualKey = source.GetKey(iIndex);
+            Assert.Equal(expectedKey, actualKey);
+
+            string actualValue = source.GetValue(iIndex);
+            Assert.Equal(expectedValue, actualValue);
+        }
+
+        [Theory]
+        [ClassData(typeof(TestDataForGetKeyValue_String))]
+        public void DictionaryExtensions_GetKey_GetValue_String_Test(Dictionary<string, string> source, int iIndex, string expectedKey, string expectedValue)
+        {
+            string actualKey = source.GetKey(iIndex);
+            Assert.Equal(expectedKey, actualKey);
+
+            string actualValue = source.GetValue(iIndex);
+            Assert.Equal(expectedValue, actualValue);
+        }
     }
 
     #region -- TheoryData -----
@@ -71,13 +107,24 @@ namespace GTC.Extensions.Test
         }
     }
 
-    /// <summary>
-    /// TheoryData Contents
-    /// Dictionary<string, int> : The dictionary that will get modified
-    /// string : The value to add to (or update) the dictionary.
-    /// int : The nuber of items expected in the dictionary after the call
-    /// int : The quantity (value part of the KeyValuePair) of the Key after the call.
-    /// </summary>
+    public class TestDataForAddOrUpdateItems : TheoryData<Dictionary<string, List<string>>, string, string>
+    {
+        public TestDataForAddOrUpdateItems()
+        {
+            Dictionary<string, List<string>> dictionaryOfValues = new Dictionary<string, List<string>>();
+            dictionaryOfValues.Add("Key1", new List<string>());
+            dictionaryOfValues["Key1"].Add("Item1");
+            dictionaryOfValues["Key1"].Add("Item2");
+
+
+            // Dictionary doesn't contain value
+            Add(dictionaryOfValues, "Key3", "Item1");
+
+            // Dictionary does contain value
+            Add(dictionaryOfValues, "Key1", "Item1");
+        }
+    }
+
     public class TestDataForAddOrUpdateCount : TheoryData<Dictionary<string, int>, string, int, int>
     {
         public TestDataForAddOrUpdateCount()
@@ -98,21 +145,50 @@ namespace GTC.Extensions.Test
         }
     }
 
-    public class TestDataForAddOrUpdateItems : TheoryData<Dictionary<string, List<string>>, string, string>
+    public class TestDataForAsString : TheoryData<Dictionary<string, string>, string, string, string>
     {
-        public TestDataForAddOrUpdateItems()
+        public TestDataForAsString()
         {
-            Dictionary<string, List<string>> dictionaryOfValues = new Dictionary<string, List<string>>();
-            dictionaryOfValues.Add("Key1", new List<string>());
-            dictionaryOfValues["Key1"].Add("Item1");
-            dictionaryOfValues["Key1"].Add("Item2");
+            Dictionary<string, string> dictionaryOfValues = new Dictionary<string, string>();
+            dictionaryOfValues.Add("Key1", "Value1");
+            dictionaryOfValues.Add("Key2", "Value2");
+            dictionaryOfValues.Add("Key3", "Value3");
 
+            Add(dictionaryOfValues, ";", "-", "Key1-Value1;Key2-Value2;Key3-Value3");
+            Add(dictionaryOfValues, "", "", "Key1=Value1\r\nKey2=Value2\r\nKey3=Value3");
 
-            // Dictionary doesn't contain value
-            Add(dictionaryOfValues, "Key3", "Item1");
+        }
+    }
 
-            // Dictionary does contain value
-            Add(dictionaryOfValues, "Key1", "Item1");
+    public class TestDataForGetKeyValue_IEnumerable : TheoryData<Dictionary<string, IEnumerable<string>>, int, string, string>
+    {
+        public TestDataForGetKeyValue_IEnumerable()
+        {
+            Dictionary<string, IEnumerable<string>> dictionary = new Dictionary<string, IEnumerable<string>>
+            {
+                { "Key1", new List<string> { "Value1a", "Value1b" } },
+                { "Key2", new List<string> { "Value2a", "Value2b" } }
+            };
+
+            Add(dictionary, 0, "Key1", "Value1a;Value1b");
+            Add(dictionary, 1, "Key2", "Value2a;Value2b");
+            Add(dictionary, 2, string.Empty, string.Empty);
+        }
+    }
+
+    public class TestDataForGetKeyValue_String : TheoryData<Dictionary<string, string>, int, string, string>
+    {
+        public TestDataForGetKeyValue_String()
+        {
+            Dictionary<string, string> dictionary = new Dictionary<string, string>
+            {
+                { "Key1", "Value1" },
+                { "Key2", "Value2" },
+            };
+
+            Add(dictionary, 0, "Key1", "Value1");
+            Add(dictionary, 1, "Key2", "Value2");
+            Add(dictionary, 2, string.Empty, string.Empty);
         }
     }
     #endregion

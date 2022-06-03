@@ -8,8 +8,18 @@ using System.IO;
 
 namespace GTC.Extensions
 {
+    /// <summary>
+    /// Extension class for <see cref="DataTable"/> objects that exposes methods for modifying data and retrieving subsets of data.
+    /// </summary>
     public static class DataTable_Extensions
     {
+        /// <summary>
+        /// Retrieves all of the items in the specified column and adds the <see cref="String"/> representations to
+        /// a list object.
+        /// </summary>
+        /// <param name="table">The <see cref="DataTable"/> to which this method is exposed.</param>
+        /// <param name="columnName">The name of the column containing the items to retrieve.</param>
+        /// <returns>a <see cref="List{String}"/> object.</returns>
         public static List<string> GetColumnValuesAsStringList(this DataTable table, string columnName)
         {
             List<string> items = new List<string>();
@@ -31,6 +41,13 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Retrieves all of the items in the specified column and adds the <see cref="String"/> representations to
+        /// a list object.
+        /// </summary>
+        /// <param name="table">The <see cref="DataTable"/> to which this method is exposed.</param>
+        /// <param name="columnIndex">The index of the column containing the items to retrieve.</param>
+        /// <returns>a <see cref="List{String}"/> object.</returns>
         public static List<string> GetColumnValuesAsStringList(this DataTable table, int columnIndex)
         {
             List<string> items = new List<string>();
@@ -52,6 +69,12 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Retrieves all of the items in the specified column and adds the objects to a list object.
+        /// </summary>
+        /// <param name="table">The <see cref="DataTable"/> to which this method is exposed.</param>
+        /// <param name="columnName">The name of the column containing the items to retrieve.</param>
+        /// <returns>a <see cref="List{T}"/> object, where {T} represents the column's DataType.</returns>
         public static List<object> GetColumnValues(this DataTable table, string columnName)
         {
             List<object> items = new List<object>();
@@ -70,6 +93,12 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Retrieves all of the items in the specified column and adds the objects to a list object.
+        /// </summary>
+        /// <param name="table">The <see cref="DataTable"/> to which this method is exposed.</param>
+        /// <param name="columnIndex">The index of the column containing the items to retrieve.</param>
+        /// <returns>a <see cref="List{T}"/> object, where {T} represents the column's DataType.</returns>
         public static List<object> GetColumnValues(this DataTable table, int columnIndex)
         {
             List<object> items = new List<object>();
@@ -88,6 +117,12 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Adds the data rows from a second table to the first table, assuming that the two schemas are the same.
+        /// </summary>
+        /// <param name="table">The <see cref="DataTable"/> to which this method is exposed.</param>
+        /// <param name="tableToAdd">The table containing the rows of data to add.</param>
+        /// <returns>a count of the number of rows successfully added to the main table.</returns>
         public static int AddTableData(this DataTable table, DataTable tableToAdd)
         {
             int numAdded = 0;
@@ -97,9 +132,9 @@ namespace GTC.Extensions
                     && table.Columns.Count == tableToAdd.Columns.Count
                     && table.Rows != null && tableToAdd.Rows != null)
                 {
-                    foreach (DataRow row in table.Rows)
+                    foreach (DataRow row in tableToAdd.Rows)
                     {
-                        tableToAdd.Rows.Add(row.ItemArray);
+                        table.Rows.Add(row.ItemArray);
                         numAdded++;
                     }
                 }
@@ -107,12 +142,19 @@ namespace GTC.Extensions
             catch (Exception ex)
             {
                 Log.ForContext("Source Context", "GTC.Extensions.DataTable_Extensions")
-                    .Error(ex, "AddTableData threw an exception after adding {numRows} rows of data.", numAdded);
+                    .Warning(ex, "AddTableData threw an exception after adding {numRows} rows of data. The exception was caught, and the extension was allowed to complete the work.", numAdded);
             }
             return numAdded;
         }
 
+        /*
         // Need to test and validate
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table"></param>
+        /// <param name="separator"></param>
+        /// <returns></returns>
         public static List<string> GetRowValuesAsStringList(this DataTable table, string separator = "")
         {
             List<string> list = new List<string>();
@@ -165,5 +207,6 @@ namespace GTC.Extensions
                 sw.Write(table.GetRowValuesAsSingleString(",", "\r\n"));
             }
         }
+        */
     }
 }
