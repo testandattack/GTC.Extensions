@@ -169,6 +169,17 @@ namespace GTC.Extensions
             return newStr.Shortened(maxLen);
         }
 
+        public static bool IsGreaterThan(this string source, string secondString, StringComparison comp = StringComparison.CurrentCultureIgnoreCase)
+        {
+            return String.Compare(source, secondString, comp) > 0;
+        }
+
+        public static bool IsLessThan(this string source, string secondString, StringComparison comp = StringComparison.CurrentCultureIgnoreCase)
+        {
+            int x = String.Compare(source, secondString, comp);
+            return x < 0;
+        }
+
         // Need to test and validate
         public static string FileNameWithoutPath(this string source)
         {

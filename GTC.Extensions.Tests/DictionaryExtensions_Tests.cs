@@ -54,6 +54,19 @@ namespace GTC.Extensions.Test
         }
 
         [Theory]
+        [ClassData(typeof(TestDataForAsString))]
+        public void DictionaryExtensions_AsString_Test(Dictionary<string, string> sampleDictionary, string entrySeparator, string kvpSeparator, string expectedResult)
+        {
+            string actualResult;
+            if (entrySeparator == "")
+                actualResult = sampleDictionary.AsString();
+            else
+                actualResult = sampleDictionary.AsString(entrySeparator, kvpSeparator);
+
+            Assert.Equal(expectedResult, actualResult);
+        }
+
+        [Theory]
         [ClassData(typeof(TestDataForGetKeyValue_IEnumerable))]
         public void DictionaryExtensions_GetKey_GetValue_IEnumerable_Test(Dictionary<string, IEnumerable<string>> source, int iIndex, string expectedKey, string expectedValue)
         {
@@ -94,13 +107,24 @@ namespace GTC.Extensions.Test
         }
     }
 
-    /// <summary>
-    /// TheoryData Contents
-    /// Dictionary<string, int> : The dictionary that will get modified
-    /// string : The value to add to (or update) the dictionary.
-    /// int : The nuber of items expected in the dictionary after the call
-    /// int : The quantity (value part of the KeyValuePair) of the Key after the call.
-    /// </summary>
+    public class TestDataForAddOrUpdateItems : TheoryData<Dictionary<string, List<string>>, string, string>
+    {
+        public TestDataForAddOrUpdateItems()
+        {
+            Dictionary<string, List<string>> dictionaryOfValues = new Dictionary<string, List<string>>();
+            dictionaryOfValues.Add("Key1", new List<string>());
+            dictionaryOfValues["Key1"].Add("Item1");
+            dictionaryOfValues["Key1"].Add("Item2");
+
+
+            // Dictionary doesn't contain value
+            Add(dictionaryOfValues, "Key3", "Item1");
+
+            // Dictionary does contain value
+            Add(dictionaryOfValues, "Key1", "Item1");
+        }
+    }
+
     public class TestDataForAddOrUpdateCount : TheoryData<Dictionary<string, int>, string, int, int>
     {
         public TestDataForAddOrUpdateCount()
@@ -121,21 +145,18 @@ namespace GTC.Extensions.Test
         }
     }
 
-    public class TestDataForAddOrUpdateItems : TheoryData<Dictionary<string, List<string>>, string, string>
+    public class TestDataForAsString : TheoryData<Dictionary<string, string>, string, string, string>
     {
-        public TestDataForAddOrUpdateItems()
+        public TestDataForAsString()
         {
-            Dictionary<string, List<string>> dictionaryOfValues = new Dictionary<string, List<string>>();
-            dictionaryOfValues.Add("Key1", new List<string>());
-            dictionaryOfValues["Key1"].Add("Item1");
-            dictionaryOfValues["Key1"].Add("Item2");
+            Dictionary<string, string> dictionaryOfValues = new Dictionary<string, string>();
+            dictionaryOfValues.Add("Key1", "Value1");
+            dictionaryOfValues.Add("Key2", "Value2");
+            dictionaryOfValues.Add("Key3", "Value3");
 
+            Add(dictionaryOfValues, ";", "-", "Key1-Value1;Key2-Value2;Key3-Value3");
+            Add(dictionaryOfValues, "", "", "Key1=Value1\r\nKey2=Value2\r\nKey3=Value3");
 
-            // Dictionary doesn't contain value
-            Add(dictionaryOfValues, "Key3", "Item1");
-
-            // Dictionary does contain value
-            Add(dictionaryOfValues, "Key1", "Item1");
         }
     }
 

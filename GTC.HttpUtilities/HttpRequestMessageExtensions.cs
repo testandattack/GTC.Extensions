@@ -92,6 +92,5 @@ namespace GTC.HttpUtilities
             }
             return parms;
         }
-
     }
 }

@@ -179,6 +179,7 @@ namespace GTC.Extensions
         }
         #endregion
 
+        #region -- Other Stuff -----
         /// <summary>
         /// This method provides a simple way to add items to a string list without having any
         /// duplicate values. 
@@ -214,5 +215,24 @@ namespace GTC.Extensions
         {
             return source.Except(secondList).Concat(secondList.Except(source)).ToList();
         }
+
+        /// <summary>
+        /// Finds the string in the list that appears right AFTER the <paramref name="currentString"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="List{String}"/> to which this method is exposed.</param>
+        /// <param name="currentString">the string that appears right BEFORE the string to retrieve</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// This method is useful if you want to walk through all of the values in a List, one at a time.
+        /// </remarks>
+        public static string GetNextString(this List<string> source, string currentString)
+        {
+            int x = source.IndexOf(currentString);
+            if (x == -1 || x + 1 == source.Count)
+                return string.Empty;
+
+            return source[x + 1];
+        }
+        #endregion
     }
 }

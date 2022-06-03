@@ -156,6 +156,41 @@ namespace GTC.Extensions.Test
             string actualResult = longTestStr.Flattened(maxLen);
             Assert.Equal(expectedResult, actualResult);
         }
+
+        [Theory]
+        [InlineData("abc", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "abc", StringComparison.CurrentCulture, true)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCulture, false)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCulture, true)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCultureIgnoreCase, true)]
+        public void StringExtensions_IsGreaterThan_Test(string string1, string string2, StringComparison comp, bool expectedResult)
+        {
+            bool actualResponse = string1.IsGreaterThan(string2, comp);
+            Assert.Equal(expectedResult, actualResponse);
+        }
+
+        [Theory]
+        [InlineData("abc", "def", StringComparison.CurrentCulture, true)]
+        [InlineData("def", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "abc", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "DEF", StringComparison.Ordinal, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCulture, true)]
+        [InlineData("def", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("abc", "DEF", StringComparison.Ordinal, false)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCulture, true)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCultureIgnoreCase, true)]
+        [InlineData("DEF", "abc", StringComparison.Ordinal, true)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCulture, false)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCultureIgnoreCase, false)]
+        public void StringExtensions_IsLessThan_Test(string string1, string string2, StringComparison comp, bool expectedResult)
+        {
+            bool actualResponse = string1.IsLessThan(string2, comp);
+            Assert.Equal(expectedResult, actualResponse);
+        }
         #endregion
 
         #region -- Returns lists etc -----
@@ -208,6 +243,16 @@ namespace GTC.Extensions.Test
                     newStream.Dispose();
                 }
             }
+        }
+
+        [Fact]
+        public void StringExtensions_FileNameWithoutPath_Test()
+        {
+            string inputStr = @"c:\users\geoffgr\desktop\myfile.txt";
+            string expectedResult = "myfile.txt";
+
+            string actualResult = inputStr.FileNameWithoutPath();
+            Assert.Equal(expectedResult, actualResult);
         }
         #endregion
 

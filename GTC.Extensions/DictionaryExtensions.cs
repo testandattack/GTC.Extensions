@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text;
 
 namespace GTC.Extensions
 {
@@ -70,6 +71,26 @@ namespace GTC.Extensions
             }
         }
 
+        /// <summary>
+        /// This method converts all of the Key-Value-Pair entries into a single string,
+        /// using the provided separators between the entries.
+        /// </summary>
+        /// <param name="source">The <c>Dictionary{string, string}</c> to which this method is exposed.</param>
+        /// <param name="entrySeparator">the separator value to use between each KVP entry.
+        /// The default value is '\r\n'</param>
+        /// <param name="kvpSeparator">the separator value to use between the key and value of each entry.
+        /// The default value is '='</param>
+        /// <returns></returns>
+        public static string AsString(this Dictionary<string, string> source, string entrySeparator = "\r\n", string kvpSeparator = "=")
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(var item in source)
+            {
+                sb.Append($"{item.Key}{kvpSeparator}{item.Value}{entrySeparator}");
+            }
+            sb.Remove((sb.Length - entrySeparator.Length), entrySeparator.Length);
+            return sb.ToString();
+        }
 
         #region -- Get Dictionary Keys and Values by index -----
         /// <summary>
