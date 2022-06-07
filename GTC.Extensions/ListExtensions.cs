@@ -233,6 +233,24 @@ namespace GTC.Extensions
 
             return source[x + 1];
         }
+
+        /// <summary>
+        /// Returns a new list that does not contain the <paramref name="itemToExclude"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="List{String}"/> to which this method is exposed.</param>
+        /// <param name="itemToExclude">The string which should not be included in the resultant list.</param>
+        /// <returns>a new list.</returns>
+        public static List<string> Except(this List<string> source, string itemToExclude)
+        {
+            List<string> newList = new List<string>();
+
+            foreach (string str in source)
+            {
+                if (str != itemToExclude)
+                    newList.Add(str);
+            }
+            return newList;
+        }
         #endregion
     }
 }
