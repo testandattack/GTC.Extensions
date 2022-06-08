@@ -29,7 +29,9 @@ namespace GTC.Extensions
         }
 
         /// <summary>
-        /// 
+        /// This method checks for the existence of <paramref name="sKey"/> in the dictionary. If present, the
+        /// current value is replaced with the new <paramref name="sValue"/>. Otherwise, the key and value are added
+        /// to the Dictionary.
         /// </summary>
         /// <param name="source">The <c>Dictionary{string, string}</c> to which this method is exposed.</param>
         /// <param name="sKey">The key of the Key-Value-Pair to add if not already present.</param>
