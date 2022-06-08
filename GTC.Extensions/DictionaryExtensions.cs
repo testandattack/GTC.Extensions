@@ -20,12 +20,32 @@ namespace GTC.Extensions
         /// </summary>
         /// <param name="source">The <c>Dictionary{string, string}</c> to which this method is exposed.</param>
         /// <param name="sKey">The key of the Key-Value-Pair to add if not already present.</param>
-        /// <param name="sValue">The key of the Key-Value-Pair to add if the key is not already present.</param>
+        /// <param name="sValue">The value of the Key-Value-Pair to add if the key is not already present.</param>
         public static void AddSafely(this Dictionary<string, string> source, string sKey, string sValue)
         {
             if (source.ContainsKey(sKey))
                 return;
             source.Add(sKey, sValue);
+        }
+
+        /// <summary>
+        /// This method checks for the existence of <paramref name="sKey"/> in the dictionary. If present, the
+        /// current value is replaced with the new <paramref name="sValue"/>. Otherwise, the key and value are added
+        /// to the Dictionary.
+        /// </summary>
+        /// <param name="source">The <c>Dictionary{string, string}</c> to which this method is exposed.</param>
+        /// <param name="sKey">The key of the Key-Value-Pair to add if not already present.</param>
+        /// <param name="sValue">The value of the Key-Value-Pair to add, or update if the kley is already present.</param>
+        public static void AddOrUpdate(this Dictionary<string, string> source, string sKey, string sValue)
+        {
+            if (source.ContainsKey(sKey))
+            {
+                source[sKey] = sValue;
+            }
+            else
+            {
+                source.Add(sKey, sValue);
+            }
         }
 
         /// <summary>

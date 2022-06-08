@@ -84,6 +84,14 @@ namespace GTC.Extensions.Test
             string actualResult = sampleList.GetNextString(currentString);
             Assert.Equal(expectedResult, actualResult);
         }
+
+        [Theory]
+        [ClassData(typeof(TestDataForExcept))]
+        public void ListExtensions_Except_Test(List<string> sampleList, string itemToExclude, List<string> expectedResult)
+        {
+            var actualResult = sampleList.Except(itemToExclude);
+            Assert.Equal(expectedResult, actualResult);
+        }
     }
 
     #region -- TheoryData -----
@@ -125,6 +133,24 @@ namespace GTC.Extensions.Test
             Add(stringOfValues, "Value2", "Value3");
             Add(stringOfValues, "Value3", string.Empty);
             Add(stringOfValues, "Value5", string.Empty);
+        }
+    }
+
+    public class TestDataForExcept : TheoryData<List<string>, string, List<string>>
+    {
+        public TestDataForExcept()
+        {
+            List<string> stringOfValues = new List<string>();
+            stringOfValues.Add("Value1");
+            stringOfValues.Add("Value2");
+            stringOfValues.Add("Value3");
+
+            List<string> smallerStringOfValues = new List<string>();
+            smallerStringOfValues.Add("Value1");
+            smallerStringOfValues.Add("Value3");
+
+            Add(stringOfValues, "Value2", smallerStringOfValues);
+            Add(stringOfValues, "Value4", stringOfValues);
         }
     }
     #endregion
