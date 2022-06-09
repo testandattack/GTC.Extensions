@@ -1,5 +1,147 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+
+## GTC.Extensions Assembly
+### Namespaces
+
+<a name='GTC.Extensions'></a>
+
+## GTC.Extensions Namespace
+### Classes
+
+<a name='GTC.Extensions.CharArrayExtensions'></a>
+
+## CharArrayExtensions Class
+
+Extension class for `char[]` objects that exposes extra methods.
+
+```csharp
+public static class CharArrayExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; CharArrayExtensions
+
+| Methods | |
+| :--- | :--- |
+| [AsString(this char[])](CharArrayExtensions.AsString(thischar[]).md 'GTC.Extensions.CharArrayExtensions.AsString(this char[])') | Creates a string object from the character array. |
+| [Contains(this char[], char)](CharArrayExtensions.Contains(thischar[],char).md 'GTC.Extensions.CharArrayExtensions.Contains(this char[], char)') | Searches the array for the specified character. |
+| [Location(this char[], char)](CharArrayExtensions.Location(thischar[],char).md 'GTC.Extensions.CharArrayExtensions.Location(this char[], char)') | Searches the array for the specified character, getting the index of the first instance of the character. |
+
+<a name='GTC.Extensions.DataTable_Extensions'></a>
+
+## DataTable_Extensions Class
+
+Extension class for [System.Data.DataTable](https://docs.microsoft.com/en-us/dotnet/api/System.Data.DataTable 'System.Data.DataTable') objects that exposes methods for modifying data and retrieving subsets of data.
+
+```csharp
+public static class DataTable_Extensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DataTable_Extensions
+
+| Methods | |
+| :--- | :--- |
+| [AddTableData(this DataTable, DataTable)](DataTable_Extensions.AddTableData(thisDataTable,DataTable).md 'GTC.Extensions.DataTable_Extensions.AddTableData(this System.Data.DataTable, System.Data.DataTable)') | Adds the data rows from a second table to the first table, assuming that the two schemas are the same. |
+| [GetColumnValues(this DataTable, int)](DataTable_Extensions.GetColumnValues(thisDataTable,int).md 'GTC.Extensions.DataTable_Extensions.GetColumnValues(this System.Data.DataTable, int)') | Retrieves all of the items in the specified column and adds the objects to a list object. |
+| [GetColumnValues(this DataTable, string)](DataTable_Extensions.GetColumnValues(thisDataTable,string).md 'GTC.Extensions.DataTable_Extensions.GetColumnValues(this System.Data.DataTable, string)') | Retrieves all of the items in the specified column and adds the objects to a list object. |
+| [GetColumnValuesAsStringList(this DataTable, int)](DataTable_Extensions.GetColumnValuesAsStringList(thisDataTable,int).md 'GTC.Extensions.DataTable_Extensions.GetColumnValuesAsStringList(this System.Data.DataTable, int)') | Retrieves all of the items in the specified column and adds the [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String') representations to<br/>a list object. |
+| [GetColumnValuesAsStringList(this DataTable, string)](DataTable_Extensions.GetColumnValuesAsStringList(thisDataTable,string).md 'GTC.Extensions.DataTable_Extensions.GetColumnValuesAsStringList(this System.Data.DataTable, string)') | Retrieves all of the items in the specified column and adds the [System.String](https://docs.microsoft.com/en-us/dotnet/api/System.String 'System.String') representations to<br/>a list object. |
+
+<a name='GTC.Extensions.DateTimeExtensions'></a>
+
+## DateTimeExtensions Class
+
+A set of extension methods for [System.DateTime](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime 'System.DateTime') objects.
+
+```csharp
+public static class DateTimeExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DateTimeExtensions
+
+| Methods | |
+| :--- | :--- |
+| [DaysSince2000(this DateTime)](DateTimeExtensions.DaysSince2000(thisDateTime).md 'GTC.Extensions.DateTimeExtensions.DaysSince2000(this System.DateTime)') | Calculates the number of days since January 1, 2000. |
+| [GetElapsedSeconds(this DateTime, bool)](DateTimeExtensions.GetElapsedSeconds(thisDateTime,bool).md 'GTC.Extensions.DateTimeExtensions.GetElapsedSeconds(this System.DateTime, bool)') | Calculates the number of seconds between the object's creation time and [System.DateTime.UtcNow](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime.UtcNow 'System.DateTime.UtcNow'). |
+| [GetElapsedSecondsForDisplay(this DateTime)](DateTimeExtensions.GetElapsedSecondsForDisplay(thisDateTime).md 'GTC.Extensions.DateTimeExtensions.GetElapsedSecondsForDisplay(this System.DateTime)') | Calculates the number of seconds between the object's creation time and [System.DateTime.UtcNow](https://docs.microsoft.com/en-us/dotnet/api/System.DateTime.UtcNow 'System.DateTime.UtcNow'), formatting it as<br/>a string using the [https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#NFormatString](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#NFormatString 'https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings#NFormatString')<br/>string formatter. |
+
+<a name='GTC.Extensions.DictionaryExtensions'></a>
+
+## DictionaryExtensions Class
+
+A collection of extension methods for certain Dictionary objects.
+
+```csharp
+public static class DictionaryExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; DictionaryExtensions
+
+### Remarks
+These extension methods are designed only for a few combinations of dictionaries and will not work on  
+many combinations. Please refer to the information provided in each method's documentation to determine  
+if it will work for you.
+
+| Methods | |
+| :--- | :--- |
+| [AddOrUpdate(this Dictionary&lt;string,string&gt;, string, string)](DictionaryExtensions.AddOrUpdate(thisDictionary_string,string_,string,string).md 'GTC.Extensions.DictionaryExtensions.AddOrUpdate(this System.Collections.Generic.Dictionary<string,string>, string, string)') | This method checks for the existence of [sKey](DictionaryExtensions.AddOrUpdate(thisDictionary_string,string_,string,string).md#GTC.Extensions.DictionaryExtensions.AddOrUpdate(thisSystem.Collections.Generic.Dictionary_string,string_,string,string).sKey 'GTC.Extensions.DictionaryExtensions.AddOrUpdate(this System.Collections.Generic.Dictionary<string,string>, string, string).sKey') in the dictionary. If present, the<br/>current value is replaced with the new [sValue](DictionaryExtensions.AddOrUpdate(thisDictionary_string,string_,string,string).md#GTC.Extensions.DictionaryExtensions.AddOrUpdate(thisSystem.Collections.Generic.Dictionary_string,string_,string,string).sValue 'GTC.Extensions.DictionaryExtensions.AddOrUpdate(this System.Collections.Generic.Dictionary<string,string>, string, string).sValue'). Otherwise, the key and value are added<br/>to the Dictionary. |
+| [AddOrUpdateCount(this Dictionary&lt;string,int&gt;, string)](DictionaryExtensions.AddOrUpdateCount(thisDictionary_string,int_,string).md 'GTC.Extensions.DictionaryExtensions.AddOrUpdateCount(this System.Collections.Generic.Dictionary<string,int>, string)') | This method allows you to manage a `Dictionary{string,int}` that stores a list of strings and a quantity that <br/>indicates how many times each string has been found, counted, added, etc. |
+| [AddOrUpdateItems(this Dictionary&lt;string,List&lt;string&gt;&gt;, string, string)](DictionaryExtensions.AddOrUpdateItems(thisDictionary_string,List_string__,string,string).md 'GTC.Extensions.DictionaryExtensions.AddOrUpdateItems(this System.Collections.Generic.Dictionary<string,System.Collections.Generic.List<string>>, string, string)') | This method allows you to manage a list of values for each specified key in a Dictionary. |
+| [AddSafely(this Dictionary&lt;string,string&gt;, string, string)](DictionaryExtensions.AddSafely(thisDictionary_string,string_,string,string).md 'GTC.Extensions.DictionaryExtensions.AddSafely(this System.Collections.Generic.Dictionary<string,string>, string, string)') | This method checks for the existence of the given key. If the key is NOT present<br/>in the dictionary, then the Key-Value-Pair is added. If the key IS present, then no action<br/>is taken. |
+| [AsString(this Dictionary&lt;string,string&gt;, string, string)](DictionaryExtensions.AsString(thisDictionary_string,string_,string,string).md 'GTC.Extensions.DictionaryExtensions.AsString(this System.Collections.Generic.Dictionary<string,string>, string, string)') | This method converts all of the Key-Value-Pair entries into a single string,<br/>using the provided separators between the entries. |
+| [GetKey(this Dictionary&lt;string,string&gt;, int)](DictionaryExtensions.GetKey(thisDictionary_string,string_,int).md 'GTC.Extensions.DictionaryExtensions.GetKey(this System.Collections.Generic.Dictionary<string,string>, int)') | Retrieves the string value for the Key from the dictionary which is stored at the specified [iIndex](DictionaryExtensions.GetKey(thisDictionary_string,string_,int).md#GTC.Extensions.DictionaryExtensions.GetKey(thisSystem.Collections.Generic.Dictionary_string,string_,int).iIndex 'GTC.Extensions.DictionaryExtensions.GetKey(this System.Collections.Generic.Dictionary<string,string>, int).iIndex'). |
+| [GetKey(this Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;, int)](DictionaryExtensions.GetKey(thisDictionary_string,IEnumerable_string__,int).md 'GTC.Extensions.DictionaryExtensions.GetKey(this System.Collections.Generic.Dictionary<string,System.Collections.Generic.IEnumerable<string>>, int)') | Retrieves the string value for the Key from the dictionary which is stored at the specified [iIndex](DictionaryExtensions.GetKey(thisDictionary_string,IEnumerable_string__,int).md#GTC.Extensions.DictionaryExtensions.GetKey(thisSystem.Collections.Generic.Dictionary_string,System.Collections.Generic.IEnumerable_string__,int).iIndex 'GTC.Extensions.DictionaryExtensions.GetKey(this System.Collections.Generic.Dictionary<string,System.Collections.Generic.IEnumerable<string>>, int).iIndex'). |
+| [GetValue(this Dictionary&lt;string,string&gt;, int)](DictionaryExtensions.GetValue(thisDictionary_string,string_,int).md 'GTC.Extensions.DictionaryExtensions.GetValue(this System.Collections.Generic.Dictionary<string,string>, int)') | Retrieves the string value from the dictionary which is stored at the specified [iIndex](DictionaryExtensions.GetValue(thisDictionary_string,string_,int).md#GTC.Extensions.DictionaryExtensions.GetValue(thisSystem.Collections.Generic.Dictionary_string,string_,int).iIndex 'GTC.Extensions.DictionaryExtensions.GetValue(this System.Collections.Generic.Dictionary<string,string>, int).iIndex'). |
+| [GetValue(this Dictionary&lt;string,IEnumerable&lt;string&gt;&gt;, int)](DictionaryExtensions.GetValue(thisDictionary_string,IEnumerable_string__,int).md 'GTC.Extensions.DictionaryExtensions.GetValue(this System.Collections.Generic.Dictionary<string,System.Collections.Generic.IEnumerable<string>>, int)') | Retrieves the IEnumerable value from the dictionary which is stored at the specified [iIndex](DictionaryExtensions.GetValue(thisDictionary_string,IEnumerable_string__,int).md#GTC.Extensions.DictionaryExtensions.GetValue(thisSystem.Collections.Generic.Dictionary_string,System.Collections.Generic.IEnumerable_string__,int).iIndex 'GTC.Extensions.DictionaryExtensions.GetValue(this System.Collections.Generic.Dictionary<string,System.Collections.Generic.IEnumerable<string>>, int).iIndex'). |
+
+<a name='GTC.Extensions.ListExtensions'></a>
+
+## ListExtensions Class
+
+Extension class for [System.Collections.Generic.IEnumerable&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1') objects that exposes methods for modifying data and retrieving subsets of data.
+
+```csharp
+public static class ListExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; ListExtensions
+
+| Methods | |
+| :--- | :--- |
+| [AddUnique(this List&lt;string&gt;, string)](ListExtensions.AddUnique(thisList_string_,string).md 'GTC.Extensions.ListExtensions.AddUnique(this System.Collections.Generic.List<string>, string)') | This method provides a simple way to add items to a string list without having any<br/>duplicate values. |
+| [Except(this List&lt;string&gt;, string)](ListExtensions.Except(thisList_string_,string).md 'GTC.Extensions.ListExtensions.Except(this System.Collections.Generic.List<string>, string)') | Returns a new list that does not contain the [itemToExclude](ListExtensions.Except(thisList_string_,string).md#GTC.Extensions.ListExtensions.Except(thisSystem.Collections.Generic.List_string_,string).itemToExclude 'GTC.Extensions.ListExtensions.Except(this System.Collections.Generic.List<string>, string).itemToExclude'). |
+| [GetNextString(this List&lt;string&gt;, string)](ListExtensions.GetNextString(thisList_string_,string).md 'GTC.Extensions.ListExtensions.GetNextString(this System.Collections.Generic.List<string>, string)') | Finds the string in the list that appears right AFTER the [currentString](ListExtensions.GetNextString(thisList_string_,string).md#GTC.Extensions.ListExtensions.GetNextString(thisSystem.Collections.Generic.List_string_,string).currentString 'GTC.Extensions.ListExtensions.GetNextString(this System.Collections.Generic.List<string>, string).currentString'). |
+| [JoinAsCsv(this string[])](ListExtensions.JoinAsCsv(thisstring[]).md 'GTC.Extensions.ListExtensions.JoinAsCsv(this string[])') | This method reads an array of string items and converts them into a single string. |
+| [JoinAsCsv(this List&lt;string&gt;)](ListExtensions.JoinAsCsv(thisList_string_).md 'GTC.Extensions.ListExtensions.JoinAsCsv(this System.Collections.Generic.List<string>)') | This method reads a list of string items and converts them into a single string. |
+| [ToString(this IEnumerable&lt;int&gt;, string)](ListExtensions.ToString(thisIEnumerable_int_,string).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.IEnumerable<int>, string)') | Creates a single string from a list of integers, using the defined separator |
+| [ToString(this IEnumerable&lt;int&gt;, string, bool)](ListExtensions.ToString(thisIEnumerable_int_,string,bool).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.IEnumerable<int>, string, bool)') | Creates a single string from a list of integers, using the defined separator |
+| [ToString(this IEnumerable&lt;string&gt;, string)](ListExtensions.ToString(thisIEnumerable_string_,string).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.IEnumerable<string>, string)') | Creates a single string from a list of strings, using the defined separator |
+| [ToString(this IEnumerable&lt;string&gt;, string, bool)](ListExtensions.ToString(thisIEnumerable_string_,string,bool).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.IEnumerable<string>, string, bool)') | Creates a single string from a list of strings, using the defined separator |
+| [ToString(this List&lt;int&gt;, string)](ListExtensions.ToString(thisList_int_,string).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.List<int>, string)') | Creates a single string from a list of integers, using the defined separator |
+| [ToString(this List&lt;int&gt;, string, bool)](ListExtensions.ToString(thisList_int_,string,bool).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.List<int>, string, bool)') | Creates a single string from a list of integers, using the defined separator |
+| [ToString(this List&lt;string&gt;, string)](ListExtensions.ToString(thisList_string_,string).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.List<string>, string)') | Creates a single string from a list of strings, using the defined separator |
+| [ToString(this List&lt;string&gt;, string, bool)](ListExtensions.ToString(thisList_string_,string,bool).md 'GTC.Extensions.ListExtensions.ToString(this System.Collections.Generic.List<string>, string, bool)') | Creates a single string from a list of strings, using the defined separator |
+| [XOR(this List&lt;string&gt;, List&lt;string&gt;)](ListExtensions.XOR(thisList_string_,List_string_).md 'GTC.Extensions.ListExtensions.XOR(this System.Collections.Generic.List<string>, System.Collections.Generic.List<string>)') | This method performs an "Exclusive OR" operation on two lists, returning only those items<br/>that show up in a single list. |
+
+<a name='GTC.Extensions.MathExtensions'></a>
+
+## MathExtensions Class
+
+Extension class for [System.Collections.Generic.IEnumerable&lt;&gt;](https://docs.microsoft.com/en-us/dotnet/api/System.Collections.Generic.IEnumerable-1 'System.Collections.Generic.IEnumerable`1') objects that exposes Statistical mathematics methods.
+
+```csharp
+public static class MathExtensions
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; MathExtensions
+
+| Methods | |
+| :--- | :--- |
+| [NormalStdDev(this IEnumerable&lt;double&gt;)](MathExtensions.NormalStdDev(thisIEnumerable_double_).md 'GTC.Extensions.MathExtensions.NormalStdDev(this System.Collections.Generic.IEnumerable<double>)') | NORMAL Std Dev<br/>https://stackoverflow.com/questions/2253874/standard-deviation-in-linq  <br/>Divide by n instead of divide by n-1 |
+| [PercentileValue(this IEnumerable&lt;double&gt;, double, int)](MathExtensions.PercentileValue(thisIEnumerable_double_,double,int).md 'GTC.Extensions.MathExtensions.PercentileValue(this System.Collections.Generic.IEnumerable<double>, double, int)') | Returns the value from the list that is the largest value<br/>within the subset of percentile values sorted by<br/>smallest to largest. |
+| [SampleStdDev(this IEnumerable&lt;double&gt;)](MathExtensions.SampleStdDev(thisIEnumerable_double_).md 'GTC.Extensions.MathExtensions.SampleStdDev(this System.Collections.Generic.IEnumerable<double>)') | SAMPLE Std Dev<br/>https://stackoverflow.com/questions/2253874/standard-deviation-in-linq |
+| [StdDev(this IEnumerable&lt;double&gt;, bool, int)](MathExtensions.StdDev(thisIEnumerable_double_,bool,int).md 'GTC.Extensions.MathExtensions.StdDev(this System.Collections.Generic.IEnumerable<double>, bool, int)') | Allows you to call either Sample based or Normal Std Dev methods that are based on this article:<br/>https://stackoverflow.com/questions/2253874/standard-deviation-in-linq |
+
+<a name='GTC.Extensions.StringExtensions'></a>
 
 ## StringExtensions Class
 

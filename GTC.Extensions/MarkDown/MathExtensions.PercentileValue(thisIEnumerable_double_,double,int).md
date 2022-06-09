@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[MathExtensions](MathExtensions.md 'GTC.Extensions.MathExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[MathExtensions](GTC.Extensions.md#GTC.Extensions.MathExtensions 'GTC.Extensions.MathExtensions')
 
 ## MathExtensions.PercentileValue(this IEnumerable<double>, double, int) Method
 

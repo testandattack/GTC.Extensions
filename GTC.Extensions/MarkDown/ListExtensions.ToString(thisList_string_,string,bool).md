@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[ListExtensions](ListExtensions.md 'GTC.Extensions.ListExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[ListExtensions](GTC.Extensions.md#GTC.Extensions.ListExtensions 'GTC.Extensions.ListExtensions')
 
 ## ListExtensions.ToString(this List<string>, string, bool) Method
 

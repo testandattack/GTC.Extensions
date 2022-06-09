@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[CharArrayExtensions](CharArrayExtensions.md 'GTC.Extensions.CharArrayExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[CharArrayExtensions](GTC.Extensions.md#GTC.Extensions.CharArrayExtensions 'GTC.Extensions.CharArrayExtensions')
 
 ## CharArrayExtensions.AsString(this char[]) Method
 

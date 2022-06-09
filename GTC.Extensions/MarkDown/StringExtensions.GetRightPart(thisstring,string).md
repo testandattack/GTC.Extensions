@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[StringExtensions](StringExtensions.md 'GTC.Extensions.StringExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[StringExtensions](GTC.Extensions.md#GTC.Extensions.StringExtensions 'GTC.Extensions.StringExtensions')
 
 ## StringExtensions.GetRightPart(this string, string) Method
 
