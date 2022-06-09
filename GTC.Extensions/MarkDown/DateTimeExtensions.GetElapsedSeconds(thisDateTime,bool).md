@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[DateTimeExtensions](DateTimeExtensions.md 'GTC.Extensions.DateTimeExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[DateTimeExtensions](GTC.Extensions.md#GTC.Extensions.DateTimeExtensions 'GTC.Extensions.DateTimeExtensions')
 
 ## DateTimeExtensions.GetElapsedSeconds(this DateTime, bool) Method
 

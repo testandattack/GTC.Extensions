@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[DataTable_Extensions](DataTable_Extensions.md 'GTC.Extensions.DataTable_Extensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[DataTable_Extensions](GTC.Extensions.md#GTC.Extensions.DataTable_Extensions 'GTC.Extensions.DataTable_Extensions')
 
 ## DataTable_Extensions.GetColumnValues(this DataTable, string) Method
 

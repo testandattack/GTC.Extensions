@@ -6,7 +6,7 @@
     "IgnoreLineBreak": true,
     "TableOfContentsModes": "IncludeKind,IncludeSummary"
   },
-  "GeneratedPages": "Assembly,Types,Members",
-  "AssemblyPageName": "GTC Extensions",
+  "GeneratedPages": "Assembly,Members",
+  "AssemblyPageName": "GTC.Extensions",
   "FileNameFactory": "Name"
 }

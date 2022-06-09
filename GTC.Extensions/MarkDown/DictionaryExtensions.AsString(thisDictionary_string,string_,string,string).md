@@ -1,5 +1,5 @@
-#### [GTC.Extensions](GTCExtensions.md 'GTC Extensions')
-### [GTC.Extensions](GTCExtensions.md#GTC.Extensions 'GTC.Extensions').[DictionaryExtensions](DictionaryExtensions.md 'GTC.Extensions.DictionaryExtensions')
+#### [GTC.Extensions](GTC.Extensions.md 'GTC.Extensions')
+### [GTC.Extensions](GTC.Extensions.md#GTC.Extensions 'GTC.Extensions').[DictionaryExtensions](GTC.Extensions.md#GTC.Extensions.DictionaryExtensions 'GTC.Extensions.DictionaryExtensions')
 
 ## DictionaryExtensions.AsString(this Dictionary<string,string>, string, string) Method
 

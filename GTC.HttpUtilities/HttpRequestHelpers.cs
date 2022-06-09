@@ -6,6 +6,10 @@ using System.Text;
 
 namespace GTC.HttpUtilities
 {
+    /// <summary>
+    /// A class of methods designed to simplify the calling of HTTP Requests, and validation of
+    /// HTTP Responses.
+    /// </summary>
     public static class HttpRequestHelpers
     {
         /// <summary>
