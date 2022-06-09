@@ -4,6 +4,7 @@ using System.Text;
 
 namespace GTC.HttpUtilities
 {
+
     public static class HttpResponseCodeGroups
     {
         public static List<int> One_xx()

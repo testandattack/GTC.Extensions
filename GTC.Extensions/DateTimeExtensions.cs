@@ -10,11 +10,11 @@ namespace GTC.Extensions
         /// <summary>
         /// Calculates the number of days since January 1, 2000.
         /// </summary>
-        /// <param name="theDate">The <see cref="DateTime"/> to which this method is exposed.</param>
+        /// <param name="source">The DateTime to which this method is exposed.</param>
         /// <returns>an int.</returns>
-        public static int DaysSince2000(this DateTime theDate)
+        public static int DaysSince2000(this DateTime source)
         {
-            return (int)theDate.Subtract(new DateTime(2000, 1, 1)).TotalDays;
+            return (int)source.Subtract(new DateTime(2000, 1, 1)).TotalDays;
         }
 
         /// <summary>

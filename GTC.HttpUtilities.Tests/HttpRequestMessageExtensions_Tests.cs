@@ -29,7 +29,7 @@ namespace GTC.HttpUtilities.Tests
         {
             if (expectedResponse != "Not Implemented")
             {
-                string actualResponse = message.GetRequestBody();
+                string actualResponse = message.GetRequestContentBody();
                 Assert.Equal(expectedResponse, actualResponse);
             }
             else
@@ -37,7 +37,7 @@ namespace GTC.HttpUtilities.Tests
                 bool exceptionThrown = false;
                 try
                 {
-                    string actualResponse = message.GetRequestBody();
+                    string actualResponse = message.GetRequestContentBody();
                 }
                 catch(NotImplementedException ex)
                 {
