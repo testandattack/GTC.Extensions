@@ -65,6 +65,7 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | Methods | |
 | :--- | :--- |
 | [Five_xx()](HttpResponseCodeGroups.Five_xx().md 'GTC.HttpUtilities.HttpResponseCodeGroups.Five_xx()') | A List containing all of the 5xx (or Server Error) response codes. |
+| [Four_xx()](HttpResponseCodeGroups.Four_xx().md 'GTC.HttpUtilities.HttpResponseCodeGroups.Four_xx()') | A List containing all of the 4xx (or Client Error) response codes. |
 | [GetGroupCodes(int)](HttpResponseCodeGroups.GetGroupCodes(int).md 'GTC.HttpUtilities.HttpResponseCodeGroups.GetGroupCodes(int)') | returns the list of codes associated with the group passed in |
 | [IsValidResponseCode(int)](HttpResponseCodeGroups.IsValidResponseCode(int).md 'GTC.HttpUtilities.HttpResponseCodeGroups.IsValidResponseCode(int)') | Checks a given integer value to see if that value represents any HttpStatus Code |
 | [One_xx()](HttpResponseCodeGroups.One_xx().md 'GTC.HttpUtilities.HttpResponseCodeGroups.One_xx()') | A List containing all of the 1xx (or Informational) response codes. |

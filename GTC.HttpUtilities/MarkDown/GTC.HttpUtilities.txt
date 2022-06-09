@@ -12,6 +12,7 @@ T:GTC.HttpUtilities.HttpRequestMessageExtensions|GTC.HttpUtilities.md#GTC.HttpUt
 M:GTC.HttpUtilities.HttpResponseCodeGroups.One_xx|HttpResponseCodeGroups.One_xx().md|One_xx()
 M:GTC.HttpUtilities.HttpResponseCodeGroups.Two_xx|HttpResponseCodeGroups.Two_xx().md|Two_xx()
 M:GTC.HttpUtilities.HttpResponseCodeGroups.Three_xx|HttpResponseCodeGroups.Three_xx().md|Three_xx()
+M:GTC.HttpUtilities.HttpResponseCodeGroups.Four_xx|HttpResponseCodeGroups.Four_xx().md|Four_xx()
 M:GTC.HttpUtilities.HttpResponseCodeGroups.Five_xx|HttpResponseCodeGroups.Five_xx().md|Five_xx()
 M:GTC.HttpUtilities.HttpResponseCodeGroups.GetGroupCodes(System.Int32)|HttpResponseCodeGroups.GetGroupCodes(int).md|GetGroupCodes(int)
 M:GTC.HttpUtilities.HttpResponseCodeGroups.IsValidResponseCode(System.Int32)|HttpResponseCodeGroups.IsValidResponseCode(int).md|IsValidResponseCode(int)

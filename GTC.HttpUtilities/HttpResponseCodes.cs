@@ -126,7 +126,7 @@ namespace GTC.HttpUtilities
 		/// <item>Unsupported_Media_Type = 415</item>
 		/// <item>Range_Not_Satisfiable = 416</item>
 		/// <item>Expectation_Failed = 417</item>
-		/// <item>Im_A_Teapot = 418</item> // RFC 2324</item> RFC 7168 - April Fools or Easter Egg response
+		/// <item>Im_A_Teapot = 418 (RFC 2324, RFC 7168 - April Fools or Easter Egg response)</item>
 		/// <item>Misdirected_Request = 421</item>
 		/// <item>Unprocessable_Entity = 422</item>
 		/// <item>Locked = 423</item>
