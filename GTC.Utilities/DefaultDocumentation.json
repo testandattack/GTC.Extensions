@@ -1,0 +1,12 @@
+{
+  "LinksBaseUrl": "https://github.com/testandattack/GTC.Extensions/blob/master/GTC.Utilities/MarkDown/",
+  "LinksOutputFilePath": "MarkDown\\GTC.Utilities.txt",
+  "GeneratedAccessModifiers": "Public,Protected,ProtectedInternal",
+  "Markdown": {
+    "IgnoreLineBreak": true,
+    "TableOfContentsModes": "IncludeKind,IncludeSummary"
+  },
+  "GeneratedPages": "Assembly,Members",
+  "AssemblyPageName": "GTC.Utilities",
+  "FileNameFactory": "Name"
+}

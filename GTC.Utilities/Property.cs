@@ -2,7 +2,10 @@
 
 namespace GTC.Utilities
 {
-
+    /// <summary>
+    /// Provides a class for holding a C# property that can be obfuscated as needed, 
+    /// to prevent storing sensitive data, such as passwords.
+    /// </summary>
     public class Property : ICloneable
     {
         #region -- Properties -----
@@ -12,70 +15,158 @@ namespace GTC.Utilities
         public string Name { get; set; }
 
         /// <summary>
-        /// The property's value
+        /// The value stored in the property.
         /// </summary>
+        /// <remarks>
+        /// This item is stored in its native form, but if the <see cref="IsObfuscated"/> value
+        /// is set to "True", then retrieving this property will only return a string
+        /// of asterisks: "********". To retrieve the actual value, you must call the
+        /// <see cref="GetPwdValue"/> method.
+        /// </remarks>
         public object Value
         {
             get
             {
-                if (this.IsPassword)
-                    return (_value as Password).pwdValue;
+                if (this.IsObfuscated)
+                {
+                    return _password.pwdValue;
+                }
                 else
+                {
                     return this._value;
+                }
             }
             set
             {
-                if (this.IsPassword)
-                    this._value = new Password(value.ToString());
+                if (this.IsObfuscated)
+                    this._password = new Password(value.ToString());
                 else
                     this._value = value;
             }
         }
         private object _value;
-
+        private Password _password;
         /// <summary>
-        /// The <see cref="Type"/> of the property
+        /// The Type of the stored property value.
         /// </summary>
         public Type Type { get; set; }
-
+        
         /// <summary>
-        /// A boolean indicating whether the property's value contains 
-        /// a password that should not be serialized or displayed.
+        /// A boolean indicating whether the value should be treated as sensitive, or
+        /// can be treated as a normal property value.
         /// </summary>
-        public bool IsPassword { get; set; }
+        /// <remarks>
+        /// If this is "True", then any call directly to the <see cref="Value"/> will
+        /// result in a string of asterisks being returned. Further, there is
+        /// a method called <see cref="ShouldSerializeValue"/> that is a
+        /// NewtonSoft JSON event hook that tells the serilizer whether the
+        /// value should be serialized for transmission or saving.
+        /// </remarks>
+        public bool IsObfuscated { get; set; }
         #endregion
 
         #region -- Constructors -----
+
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
         public Property()
         {
             Name = string.Empty;
             Value = string.Empty;
+            _password = new Password();
             Type = typeof(object);
-            IsPassword = false;
+            IsObfuscated = false;
         }
 
-        public Property(string name, object value)
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
+        /// <param name="name">the value to place into the <see cref="Name"/> property</param>
+        /// <param name="value">the value to place into the <see cref="Value"/> property</param>
+        public Property(string name, string value)
         {
             this.Name = name;
             this.Value = value;
-            this.Type = value.GetType();
-            IsPassword = false;
+            _password = new Password();
+            this.Type = typeof(System.String);
+            IsObfuscated = false;
         }
 
-        public Property(string name, string value, bool isPassword)
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
+        /// <param name="name">the value to place into the <see cref="Name"/> property</param>
+        /// <param name="value">the value to place into the <see cref="Value"/> property</param>
+        public Property(string name, object value)
         {
             this.Name = name;
-            if(isPassword == true)
+            this.Value = value.ToString();
+            this.Type = value.GetType();
+            _password = new Password();
+            IsObfuscated = false;
+        }
+
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
+        /// <param name="name">the value to place into the <see cref="Name"/> property</param>
+        /// <param name="value">the value to place into the <see cref="Value"/> property</param>
+        /// <param name="type">the value to place into the <see cref="Type"/> property</param>
+        public Property(string name, string value, Type type)
+        {
+            this.Name = name;
+            this.Value = value;
+            this.Type = type;
+            _password = new Password();
+            IsObfuscated = false;
+        }
+
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
+        /// <param name="name">the value to place into the <see cref="Name"/> property</param>
+        /// <param name="value">the value to place into the <see cref="Value"/> property</param>
+        /// <param name="isObfuscated">the value to place into the <see cref="IsObfuscated"/> property</param>
+        public Property(string name, string value, bool isObfuscated)
+        {
+            this.IsObfuscated = isObfuscated;
+            this.Name = name;
+            if (isObfuscated)
             {
-                this.Value = new Password(value);
+                this.Value = "********";
+                this._password = new Password(value);
                 this.Type = typeof(Password);
             }
             else
             {
                 this.Value = value;
-                this.Type = typeof(System.String);
+                this.Type = typeof(String);
             }
-            IsPassword = isPassword;
+        }
+
+        /// <summary>
+        /// Creates a new instance of this class
+        /// </summary>
+        /// <param name="name">the value to place into the <see cref="Name"/> property</param>
+        /// <param name="value">the value to place into the <see cref="Value"/> property</param>
+        /// <param name="type">the value to place into the <see cref="Type"/> property</param>
+        /// <param name="isObfuscated">the value to place into the <see cref="IsObfuscated"/> property</param>
+        public Property(string name, string value, Type type, bool isObfuscated)
+        {
+            this.IsObfuscated = isObfuscated;
+            this.Name = name;
+            if(isObfuscated)
+            {
+                this.Value = "********";
+                this._password = new Password(value);
+            }
+            else
+            {
+                this.Value = value;
+                this._password = new Password();
+            }
+            this.Type = type;
         }
         #endregion
 
@@ -83,50 +174,46 @@ namespace GTC.Utilities
         private Property(Property copy)
         {
             this.Name = copy.Name;
+            this.Value = copy.Value;
+            this._password = copy._password;
             this.Type = copy.Type;
-            this.IsPassword = copy.IsPassword;
-            if (copy.IsPassword)
-                this.Value = copy.GetPwdValue();
-            else
-                this.Value = copy.Value;
+            this.IsObfuscated = copy.IsObfuscated;
         }
 
+        /// <summary>
+        /// Creates a new instance of the class, containing all of the same values.
+        /// </summary>
+        /// <returns></returns>
         public object Clone()
         {
             return new Property(this);
         }
         #endregion
 
-        public override string ToString()
-        {
-            if (this.IsPassword)
-                return (_value as Password).pwdValue;
-            else if (this.Type == typeof(System.String))
-                return (string)this._value;
-            else
-                return this._value.ToString();
-        }
-
+        /// <summary>
+        /// This method retrieves the actual value of an obfuscated string stored
+        /// in the <see cref="Value"/> property. If the property is not obfuscated,
+        /// this method returns an empty string.
+        /// </summary>
         public string GetPwdValue()
         {
-            if (this.IsPassword)
-                return (_value as Password).GetPwd();
+            if (this.IsObfuscated)
+                return _password.GetPwd();
             else
-                return _value.ToString();
+                return string.Empty;
         }
 
         /// <summary>
-        /// This method tells Newtonsoft whether to serialize the
-        /// value. If it is a password, it will NOT be serialized.
+        /// Implements the Newtonsoft JSON conditional serializer setting to 
+        /// ensure that any value that shpould be obfuscated will not be
+        /// serialized by NewtonSoft. See <see href="https://www.newtonsoft.com/json/help/html/ConditionalProperties.htm">
+        /// this article</see> for more information.
         /// </summary>
-        /// <remarks>
-        /// see https://www.newtonsoft.com/json/help/html/ConditionalProperties.htm 
-        /// for more information on how this works.</remarks>
-        /// <returns>true if the value should be serialized, false if not.</returns>
+        /// <returns></returns>
         public bool ShouldSerializeValue()
         {
             // Serialize the value property if it is NOT a password.
-            return !IsPassword;
+            return !this.IsObfuscated;
         }
     }
 
@@ -159,6 +246,9 @@ namespace GTC.Utilities
             return _pwdValue;
         }
 
-
+        public override string ToString()
+        {
+            return pwdValue;
+        }
     }
 }

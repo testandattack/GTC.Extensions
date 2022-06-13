@@ -37,7 +37,7 @@ namespace GTC.Utilities.Tests
             // The name in the cloned copy should not have changed
             Assert.False(clonedProperty.Name == property.Name);
             
-            if (property.IsPassword)
+            if (property.IsObfuscated)
             {
                 // If it is a password, the shown value should be the same, regardless of the actual value
                 Assert.True(clonedProperty.Value == property.Value);
@@ -57,13 +57,13 @@ namespace GTC.Utilities.Tests
             if (isPassword)
             {
                 Property property = new Property(name, objValue.ToString(), isPassword);
-                Assert.Equal(expectedString, property.ToString());
+                Assert.Equal(expectedString, property.Value.ToString());
                 Assert.Equal(objValue.ToString(), property.GetPwdValue());
             }
             else
             {
                 Property property = new Property(name, objValue);
-                Assert.Equal(expectedString, property.ToString());
+                Assert.Equal(expectedString, property.Value.ToString());
             }
         }
     }
