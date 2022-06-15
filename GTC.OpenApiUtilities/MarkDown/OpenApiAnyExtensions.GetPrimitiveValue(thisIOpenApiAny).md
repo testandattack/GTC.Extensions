@@ -1,5 +1,5 @@
-#### [GTC.OpenApiUtilities](GTC.HttpUtilities.md 'GTC.HttpUtilities')
-### [GTC.OpenApiUtilities](GTC.HttpUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiAnyExtensions](GTC.HttpUtilities.md#GTC.OpenApiUtilities.OpenApiAnyExtensions 'GTC.OpenApiUtilities.OpenApiAnyExtensions')
+#### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md 'GTC.OpenApiUtilities')
+### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiAnyExtensions](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.OpenApiAnyExtensions 'GTC.OpenApiUtilities.OpenApiAnyExtensions')
 
 ## OpenApiAnyExtensions.GetPrimitiveValue(this IOpenApiAny) Method
 

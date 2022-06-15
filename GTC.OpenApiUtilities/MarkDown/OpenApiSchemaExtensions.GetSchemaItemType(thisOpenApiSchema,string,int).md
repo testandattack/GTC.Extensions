@@ -1,5 +1,5 @@
-#### [GTC.OpenApiUtilities](GTC.HttpUtilities.md 'GTC.HttpUtilities')
-### [GTC.OpenApiUtilities](GTC.HttpUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiSchemaExtensions](GTC.HttpUtilities.md#GTC.OpenApiUtilities.OpenApiSchemaExtensions 'GTC.OpenApiUtilities.OpenApiSchemaExtensions')
+#### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md 'GTC.OpenApiUtilities')
+### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiSchemaExtensions](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.OpenApiSchemaExtensions 'GTC.OpenApiUtilities.OpenApiSchemaExtensions')
 
 ## OpenApiSchemaExtensions.GetSchemaItemType(this OpenApiSchema, string, int) Method
 

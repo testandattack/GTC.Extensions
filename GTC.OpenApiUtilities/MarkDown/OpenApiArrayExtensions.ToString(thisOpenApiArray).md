@@ -1,5 +1,5 @@
-#### [GTC.OpenApiUtilities](GTC.HttpUtilities.md 'GTC.HttpUtilities')
-### [GTC.OpenApiUtilities](GTC.HttpUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiArrayExtensions](GTC.HttpUtilities.md#GTC.OpenApiUtilities.OpenApiArrayExtensions 'GTC.OpenApiUtilities.OpenApiArrayExtensions')
+#### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md 'GTC.OpenApiUtilities')
+### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities 'GTC.OpenApiUtilities').[OpenApiArrayExtensions](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.OpenApiArrayExtensions 'GTC.OpenApiUtilities.OpenApiArrayExtensions')
 
 ## OpenApiArrayExtensions.ToString(this OpenApiArray) Method
 

@@ -1,4 +1,4 @@
-#### [GTC.OpenApiUtilities](GTC.HttpUtilities.md 'GTC.HttpUtilities')
+#### [GTC.OpenApiUtilities](GTC.OpenApiUtilities.md 'GTC.OpenApiUtilities')
 
 ## GTC.OpenApiUtilities Assembly
 ### Namespaces
@@ -105,19 +105,19 @@ A [System.Boolean](https://docs.microsoft.com/en-us/dotnet/api/System.Boolean 'S
 
 `Byte` 12
 
-A [Byte](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
+A [Byte](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.Date'></a>
 
 `Date` 10
 
-The Date portion of a [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+The Date portion of a [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.DateTime'></a>
 
 `DateTime` 9
 
-A [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+A [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.Double'></a>
 
@@ -141,97 +141,97 @@ A plain old [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.In
 
 `List` 0
 
-A [List](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.List 'GTC.OpenApiUtilities.ObjectTypeEnum.List') of items, referred to as arrays in the openApi spec
+A [List](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.List 'GTC.OpenApiUtilities.ObjectTypeEnum.List') of items, referred to as arrays in the openApi spec
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_BinaryString'></a>
 
 `List_BinaryString` 14
 
-A list of [BinaryString](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString 'GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString') items
+A list of [BinaryString](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString 'GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Boolean'></a>
 
 `List_Boolean` 17
 
-A list of[Boolean](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Boolean 'GTC.OpenApiUtilities.ObjectTypeEnum.Boolean') items
+A list of[Boolean](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Boolean 'GTC.OpenApiUtilities.ObjectTypeEnum.Boolean') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Byte'></a>
 
 `List_Byte` 22
 
-A list of [Byte](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
+A list of [Byte](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Date'></a>
 
 `List_Date` 20
 
-A list of The Date portion of a [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+A list of The Date portion of a [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_DateTime'></a>
 
 `List_DateTime` 19
 
-A list of [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+A list of [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Double'></a>
 
 `List_Double` 18
 
-A list of [Double](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Double 'GTC.OpenApiUtilities.ObjectTypeEnum.Double') items
+A list of [Double](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Double 'GTC.OpenApiUtilities.ObjectTypeEnum.Double') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Integer'></a>
 
 `List_Integer` 16
 
-A list of [Integer](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Integer 'GTC.OpenApiUtilities.ObjectTypeEnum.Integer') items
+A list of [Integer](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Integer 'GTC.OpenApiUtilities.ObjectTypeEnum.Integer') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List'></a>
 
 `List_List` 1
 
-A list of [List](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.List 'GTC.OpenApiUtilities.ObjectTypeEnum.List') of items, referred to as arrays in the openApi spec
+A list of [List](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.List 'GTC.OpenApiUtilities.ObjectTypeEnum.List') of items, referred to as arrays in the openApi spec
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_BinaryString'></a>
 
 `List_List_BinaryString` 24
 
-A list of lists of [BinaryString](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString 'GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString') items
+A list of lists of [BinaryString](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString 'GTC.OpenApiUtilities.ObjectTypeEnum.BinaryString') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Boolean'></a>
 
 `List_List_Boolean` 27
 
-A list of lists of [Boolean](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Boolean 'GTC.OpenApiUtilities.ObjectTypeEnum.Boolean') items
+A list of lists of [Boolean](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Boolean 'GTC.OpenApiUtilities.ObjectTypeEnum.Boolean') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Byte'></a>
 
 `List_List_Byte` 32
 
-A list of lists of [Byte](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
+A list of lists of [Byte](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Byte 'GTC.OpenApiUtilities.ObjectTypeEnum.Byte')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Date'></a>
 
 `List_List_Date` 30
 
-A list of lists of The Date portion of a [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+A list of lists of The Date portion of a [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_DateTime'></a>
 
 `List_List_DateTime` 29
 
-A list of lists of [DateTime](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
+A list of lists of [DateTime](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.DateTime 'GTC.OpenApiUtilities.ObjectTypeEnum.DateTime')
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Double'></a>
 
 `List_List_Double` 28
 
-A list of lists of [Double](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Double 'GTC.OpenApiUtilities.ObjectTypeEnum.Double') items
+A list of lists of [Double](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Double 'GTC.OpenApiUtilities.ObjectTypeEnum.Double') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Integer'></a>
 
 `List_List_Integer` 26
 
-A list of lists of [Integer](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Integer 'GTC.OpenApiUtilities.ObjectTypeEnum.Integer') items
+A list of lists of [Integer](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Integer 'GTC.OpenApiUtilities.ObjectTypeEnum.Integer') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_Long'></a>
 
@@ -243,13 +243,13 @@ A list of lists of [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/Sy
 
 `List_List_Object` 23
 
-A list of lists of [Object](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Object 'GTC.OpenApiUtilities.ObjectTypeEnum.Object') items
+A list of lists of [Object](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Object 'GTC.OpenApiUtilities.ObjectTypeEnum.Object') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_List_String'></a>
 
 `List_List_String` 25
 
-A list of lists of [String](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String') items
+A list of lists of [String](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_Long'></a>
 
@@ -261,13 +261,13 @@ A list of [System.Int64](https://docs.microsoft.com/en-us/dotnet/api/System.Int6
 
 `List_Objecgt` 13
 
-A list of [Object](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Object 'GTC.OpenApiUtilities.ObjectTypeEnum.Object') items
+A list of [Object](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.Object 'GTC.OpenApiUtilities.ObjectTypeEnum.Object') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.List_String'></a>
 
 `List_String` 15
 
-A list of [String](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String') items
+A list of [String](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String') items
 
 <a name='GTC.OpenApiUtilities.ObjectTypeEnum.Long'></a>
 
@@ -291,7 +291,7 @@ A class-based response object
 
 `String` 5
 
-A plain old [String](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String').
+A plain old [String](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ObjectTypeEnum.String 'GTC.OpenApiUtilities.ObjectTypeEnum.String').
 
 <a name='GTC.OpenApiUtilities.RequestBodyContentTypeEnum'></a>
 
@@ -362,25 +362,25 @@ A plain old [System.Int32](https://docs.microsoft.com/en-us/dotnet/api/System.In
 
 `List_BinaryString` 6
 
-A list of [BinaryString](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.BinaryString 'GTC.OpenApiUtilities.ResponseTypeEnum.BinaryString') items
+A list of [BinaryString](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.BinaryString 'GTC.OpenApiUtilities.ResponseTypeEnum.BinaryString') items
 
 <a name='GTC.OpenApiUtilities.ResponseTypeEnum.List_Integer'></a>
 
 `List_Integer` 8
 
-A list of [Integer](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.Integer 'GTC.OpenApiUtilities.ResponseTypeEnum.Integer') items
+A list of [Integer](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.Integer 'GTC.OpenApiUtilities.ResponseTypeEnum.Integer') items
 
 <a name='GTC.OpenApiUtilities.ResponseTypeEnum.List_Object'></a>
 
 `List_Object` 5
 
-A list of [Object](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.Object 'GTC.OpenApiUtilities.ResponseTypeEnum.Object') items
+A list of [Object](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.Object 'GTC.OpenApiUtilities.ResponseTypeEnum.Object') items
 
 <a name='GTC.OpenApiUtilities.ResponseTypeEnum.List_String'></a>
 
 `List_String` 7
 
-A list of [String](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.String 'GTC.OpenApiUtilities.ResponseTypeEnum.String') items
+A list of [String](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.String 'GTC.OpenApiUtilities.ResponseTypeEnum.String') items
 
 <a name='GTC.OpenApiUtilities.ResponseTypeEnum.none'></a>
 
@@ -398,7 +398,7 @@ A class-based response object
 
 `String` 3
 
-A plain old [String](GTC.HttpUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.String 'GTC.OpenApiUtilities.ResponseTypeEnum.String').
+A plain old [String](GTC.OpenApiUtilities.md#GTC.OpenApiUtilities.ResponseTypeEnum.String 'GTC.OpenApiUtilities.ResponseTypeEnum.String').
 
 ### Remarks
 This is used by the test generation software to   
