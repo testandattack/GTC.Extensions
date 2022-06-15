@@ -5,7 +5,7 @@ namespace GTC.OpenApiUtilities
 {
     /// <summary>
     /// Enumerates the types of data objects that can be found in
-    /// an <see cref="OpenApiSchema"/> object
+    /// an <see cref="OpenApiSchema"/> object.
     /// </summary>
     public enum ObjectTypeEnum
     {

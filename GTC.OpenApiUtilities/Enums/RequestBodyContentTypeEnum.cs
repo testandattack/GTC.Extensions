@@ -5,7 +5,7 @@ namespace GTC.OpenApiUtilities
 {
     /// <summary>
     /// Enumerates the types of request body content types 
-    /// that can be found in a <see cref="RequestBody"/> object
+    /// that can be found in a RequestBody object.
     /// </summary>
     public enum RequestBodyContentTypeEnum
     {

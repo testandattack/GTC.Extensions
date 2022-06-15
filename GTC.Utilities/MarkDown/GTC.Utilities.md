@@ -33,6 +33,23 @@ Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.O
 | :--- | :--- |
 | [AddRange(IEnumerable&lt;T&gt;)](BaseCollection_T_.AddRange(IEnumerable_T_).md 'GTC.Utilities.BaseCollection<T>.AddRange(System.Collections.Generic.IEnumerable<T>)') | Adds a collection of items to this collection |
 
+<a name='GTC.Utilities.GetInput'></a>
+
+## GetInput Class
+
+```csharp
+public static class GetInput
+```
+
+Inheritance [System.Object](https://docs.microsoft.com/en-us/dotnet/api/System.Object 'System.Object') &#129106; GetInput
+
+| Methods | |
+| :--- | :--- |
+| [GetConsoleLine(string)](GetInput.GetConsoleLine(string).md 'GTC.Utilities.GetInput.GetConsoleLine(string)') | |
+| [GetConsoleLineAsInteger(string)](GetInput.GetConsoleLineAsInteger(string).md 'GTC.Utilities.GetInput.GetConsoleLineAsInteger(string)') | |
+| [GetConsoleLineWithDefaults(string, string)](GetInput.GetConsoleLineWithDefaults(string,string).md 'GTC.Utilities.GetInput.GetConsoleLineWithDefaults(string, string)') | |
+| [GetNumericFromConsole(string)](GetInput.GetNumericFromConsole(string).md 'GTC.Utilities.GetInput.GetNumericFromConsole(string)') | |
+
 <a name='GTC.Utilities.Property'></a>
 
 ## Property Class
