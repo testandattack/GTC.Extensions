@@ -1,4 +1,4 @@
-﻿namespace GTC.OpenApiUtilities
+﻿namespace GTC.HttpUtilities
 {
     public enum HttpStatusGroupsEnum
     {
