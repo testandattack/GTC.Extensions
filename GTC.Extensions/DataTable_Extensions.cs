@@ -8,29 +8,38 @@ using System.IO;
 
 namespace GTC.Extensions
 {
+    /// <summary>
+    /// Extension class for <see cref="DataTable"/> objects that exposes extra methods.
+    /// </summary>
     public static class DataTable_Extensions
     {
+        /// <summary>
+        /// Reads all the values from the specified column in the DataTable and adds them to a <see cref="List{string}"/>.
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="columnName">The name of the column whose values will be added to list.</param>
+        /// <returns>a String List that contains all of the values from the specified column.</returns>
         public static List<string> GetColumnValuesAsStringList(this DataTable table, string columnName)
         {
-            List<string> items = new List<string>();
             try
             {
-                foreach (DataRow row in table.Rows)
-                {
-                    if (row[columnName] != null)
-                        items.Add(row[columnName].ToString());
-                    else
-                        items.Add(string.Empty);
-                }
+                int iIndex = table.Columns[columnName].Ordinal;
+                return table.GetColumnValuesAsStringList(iIndex);
             }
             catch (Exception ex)
             {
                 Log.ForContext("Source Context", "GTC.Extensions.DataTable_Extensions")
                     .Error(ex, "GetColumnValuesAsStringList threw an exception using {columnName} as the column input.", columnName);
             }
-            return items;
+            return null;
         }
 
+        /// <summary>
+        /// Reads all the values from the specified column in the DataTable and adds them to a <see cref="List{string}"/>.
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="columnIndex">The index of the column whose values will be added to list.</param>
+        /// <returns>a String List that contains all of the values from the specified column.</returns>
         public static List<string> GetColumnValuesAsStringList(this DataTable table, int columnIndex)
         {
             List<string> items = new List<string>();
@@ -52,6 +61,13 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Reads all the values from the specified column in the DataTable and adds them to a <see cref="List{T}"/> that matches the
+        /// type of the specified column.
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="columnName">The name of the column whose values will be added to list.</param>
+        /// <returns>an Object List that contains all of the values from the specified column.</returns>
         public static List<object> GetColumnValues(this DataTable table, string columnName)
         {
             List<object> items = new List<object>();
@@ -70,6 +86,13 @@ namespace GTC.Extensions
             return items;
         }
 
+        /// <summary>
+        /// Reads all the values from the specified column in the DataTable and adds them to a <see cref="List{T}"/> that matches the
+        /// type of the specified column.
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="columnIndex">The index of the column whose values will be added to list.</param>
+        /// <returns>an Object List that contains all of the values from the specified column.</returns>
         public static List<object> GetColumnValues(this DataTable table, int columnIndex)
         {
             List<object> items = new List<object>();
@@ -88,7 +111,17 @@ namespace GTC.Extensions
             return items;
         }
 
-        public static int AddTableData(this DataTable table, DataTable tableToAdd)
+        /// <summary>
+        /// Adds all data from the the <paramref name="tableToAdd"/> table to the end of the <paramref name="table"/>.
+        /// </summary>
+        /// <remarks>
+        /// This method does not validate the data types for each column. Therefore you should be sure the two tables 
+        /// have the same schema.
+        /// </remarks>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="tableToAdd">the DataTable whose data will be appended to the original table</param>
+        /// <returns>a number indicating how many rows were appended to the original DataTable.</returns>
+        public static int AppendTableData(this DataTable table, DataTable tableToAdd)
         {
             int numAdded = 0;
             try
@@ -112,6 +145,13 @@ namespace GTC.Extensions
             return numAdded;
         }
 
+        /// <summary>
+        /// Converts the data in a DataTable into a String List of values with each string representing a full
+        /// row of data, separated by the character specified in the <paramref name="separator"/> parameter.
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="separator">The string separator for each data item in a row.</param>
+        /// <returns>a String List of values.</returns>
         // Need to test and validate
         public static List<string> GetRowValuesAsStringList(this DataTable table, string separator = "")
         {
@@ -131,6 +171,13 @@ namespace GTC.Extensions
             return list;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="columnSeparator"></param>
+        /// <param name="rowSeparator"></param>
+        /// <returns></returns>
         // Need to test and validate
         public static string GetRowValuesAsSingleString(this DataTable table, string columnSeparator = "", string rowSeparator = "\r\n")
         {
@@ -148,6 +195,11 @@ namespace GTC.Extensions
             return sb.ToString();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="table">the DataTable to which this extension method is exposed. </param>
+        /// <param name="fileName"></param>
         // Need to test and validate
         public static void SaveTableAsCsvFile(this DataTable table, string fileName)
         {
