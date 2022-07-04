@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GTC.Extensions\GTC.Extensions.csproj" />
+    <ProjectReference Include="..\LoggingOutputHelper\LoggingOutputHelper.csproj" />
   </ItemGroup>
 
 </Project>

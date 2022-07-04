@@ -8,6 +8,7 @@ using Xunit.Abstractions;
 using System.Linq;
 using System.Text;
 using System.IO;
+using LoggingOutputHelper;
 
 namespace GTC.Extensions.Test
 {
@@ -24,7 +25,7 @@ namespace GTC.Extensions.Test
         {
             _collectionFixture = collectionFixture;
             _classFixture = classFixture;
-            collectionFixture.ConfigureLogging(output, @"c:\temp\ListExtensions_Testing");
+            collectionFixture.ConfigureLogging(output, LogOutputHelper.OutputPath);
         }
 
         #region -- FindSubString -----
@@ -49,21 +50,19 @@ namespace GTC.Extensions.Test
                 Assert.Equal(subStringFoundAtLocation, x);
             }
         }
+
+        [Fact]
+        public void StringExtensions_FindSubStrings_Test()
+        {
+            string inputStr = "Value1,Value2,Value3";
+            List<string> expectedResult = new List<string>() { "1", "2" };
+
+            List<string> actualResult = inputStr.FindSubStrings("Value", ",");
+            Assert.Equal(expectedResult, actualResult);
+        }
         #endregion
 
         #region -- Misc -----
-        [Theory]
-        [InlineData("fox", StringComparison.InvariantCulture, true)]
-        [InlineData("Fox", StringComparison.InvariantCulture, false)]
-        [InlineData("fox", StringComparison.InvariantCultureIgnoreCase, true)]
-        [InlineData("Fox", StringComparison.InvariantCultureIgnoreCase, true)]
-        [InlineData("cat", StringComparison.InvariantCulture, false)]
-        public void StringExtensions_Contains_Test(string subString, StringComparison comp, bool expectedResult)
-        {
-            bool actualResult = testStr.Contains(subString, comp);
-            Assert.Equal(expectedResult, actualResult);
-        }
-
         [Theory]
         [InlineData("true", true)]
         [InlineData("True", true)]
@@ -155,6 +154,51 @@ namespace GTC.Extensions.Test
             string actualResult = longTestStr.Flattened(maxLen);
             Assert.Equal(expectedResult, actualResult);
         }
+
+        [Theory]
+        [InlineData("abc", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "abc", StringComparison.CurrentCulture, true)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCulture, false)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCulture, true)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCultureIgnoreCase, true)]
+        public void StringExtensions_IsGreaterThan_Test(string string1, string string2, StringComparison comp, bool expectedResult)
+        {
+            bool actualResponse = string1.IsGreaterThan(string2, comp);
+            Assert.Equal(expectedResult, actualResponse);
+        }
+
+        [Theory]
+        [InlineData("abc", "def", StringComparison.CurrentCulture, true)]
+        [InlineData("def", "def", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "abc", StringComparison.CurrentCulture, false)]
+        [InlineData("def", "DEF", StringComparison.Ordinal, false)]
+        [InlineData("def", "DEF", StringComparison.CurrentCulture, true)]
+        [InlineData("def", "DEF", StringComparison.CurrentCultureIgnoreCase, false)]
+        [InlineData("abc", "DEF", StringComparison.Ordinal, false)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCulture, true)]
+        [InlineData("abc", "DEF", StringComparison.CurrentCultureIgnoreCase, true)]
+        [InlineData("DEF", "abc", StringComparison.Ordinal, true)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCulture, false)]
+        [InlineData("DEF", "abc", StringComparison.CurrentCultureIgnoreCase, false)]
+        public void StringExtensions_IsLessThan_Test(string string1, string string2, StringComparison comp, bool expectedResult)
+        {
+            bool actualResponse = string1.IsLessThan(string2, comp);
+            Assert.Equal(expectedResult, actualResponse);
+        }
+
+        [Fact]
+        public void StringExtensions_FileNameWithoutPath_Test()
+        {
+            string inputStr = @"c:\users\geoffgr\desktop\myfile.txt";
+            string expectedResult = "myfile.txt";
+
+            string actualResult = inputStr.FileNameWithoutPath();
+            Assert.Equal(expectedResult, actualResult);
+        }
         #endregion
 
         #region -- Returns lists etc -----
@@ -175,16 +219,6 @@ namespace GTC.Extensions.Test
             int[] expectedResult = new int[] { 1, 2, 3 };
 
             int[] actualResult = inputStr.DelimitedStringToIntArray(",");
-            Assert.Equal(expectedResult, actualResult);
-        }
-
-        [Fact]
-        public void StringExtensions_FindSubStrings_Test()
-        {
-            string inputStr = "Value1,Value2,Value3";
-            List<string> expectedResult = new List<string>() { "1", "2" };
-
-            List<string> actualResult = inputStr.FindSubStrings("Value", ",");
             Assert.Equal(expectedResult, actualResult);
         }
 
@@ -225,26 +259,6 @@ namespace GTC.Extensions.Test
         public void StringExtensions_RemoveEncapsulatingQuotes_Test(string inputStr, string expectedResult)
         {
             string actualResult = inputStr.RemoveEncapsulatingQuotes();
-            Assert.Equal(expectedResult, actualResult);
-        }
-        
-        [Theory]
-        [InlineData("Brown", "green", StringComparison.InvariantCultureIgnoreCase, "The quick green fox jumped over the lazy green dog.")]
-        [InlineData("Brown", "green", StringComparison.InvariantCulture, "The quick green fox jumped over the lazy brown dog.")]
-        [InlineData("Gray", "green", StringComparison.InvariantCulture, "The quick Brown fox jumped over the lazy brown dog.")]
-        public void StringExtensions_Replace_Test(string oldStr, string newStr, StringComparison comp, string expectedResult)
-        {
-            string actualResult = testStr.Replace(oldStr, newStr, comp);
-            Assert.Equal(expectedResult, actualResult);
-        }
-        
-        [Theory]
-        [InlineData("Brown", StringComparison.CurrentCulture, "The quick  fox jumped over the lazy brown dog.")]
-        [InlineData("brown", StringComparison.CurrentCultureIgnoreCase, "The quick  fox jumped over the lazy brown dog.")]
-        [InlineData("green", StringComparison.InvariantCulture, "The quick Brown fox jumped over the lazy brown dog.")]
-        public void StringExtensions_Remove_Test(string strToRemove, StringComparison comp, string expectedResult)
-        {
-            string actualResult = testStr.Remove(strToRemove, comp);
             Assert.Equal(expectedResult, actualResult);
         }
         

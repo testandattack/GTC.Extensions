@@ -9,15 +9,26 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
     <PackageId>TestAndAttack.Utilities</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\graygeol\source\repos\GTC.Extensions\GTC.Utilities\MarkDown\GTC.Utilities.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+    <PackageReference Include="DefaultDocumentation" Version="0.8.0" PrivateAssets="all" />
     <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\GTC.Extensions\GTC.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MarkDown\" />
   </ItemGroup>
 
 </Project>

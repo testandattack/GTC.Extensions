@@ -1,0 +1,24 @@
+https://github.com/testandattack/GTC.Extensions/blob/master/GTC.Utilities/MarkDown/
+M:GTC.Utilities.BaseCollection`1.#ctor|BaseCollection_T_.BaseCollection().md|BaseCollection()
+M:GTC.Utilities.BaseCollection`1.AddRange(System.Collections.Generic.IEnumerable{`0})|BaseCollection_T_.AddRange(IEnumerable_T_).md|AddRange(IEnumerable<T>)
+N:GTC.Utilities|GTC.Utilities.md#GTC.Utilities|GTC.Utilities
+T:GTC.Utilities.BaseCollection`1|GTC.Utilities.md#GTC.Utilities.BaseCollection_T_|BaseCollection<T>
+M:GTC.Utilities.GetInput.GetNumericFromConsole(System.String)|GetInput.GetNumericFromConsole(string).md|GetNumericFromConsole(string)
+M:GTC.Utilities.GetInput.GetConsoleLine(System.String)|GetInput.GetConsoleLine(string).md|GetConsoleLine(string)
+M:GTC.Utilities.GetInput.GetConsoleLineAsInteger(System.String)|GetInput.GetConsoleLineAsInteger(string).md|GetConsoleLineAsInteger(string)
+M:GTC.Utilities.GetInput.GetConsoleLineWithDefaults(System.String,System.String)|GetInput.GetConsoleLineWithDefaults(string,string).md|GetConsoleLineWithDefaults(string, string)
+T:GTC.Utilities.GetInput|GTC.Utilities.md#GTC.Utilities.GetInput|GetInput
+P:GTC.Utilities.Property.Name|Property.Name.md|Name
+P:GTC.Utilities.Property.Value|Property.Value.md|Value
+P:GTC.Utilities.Property.Type|Property.Type.md|Type
+P:GTC.Utilities.Property.IsObfuscated|Property.IsObfuscated.md|IsObfuscated
+M:GTC.Utilities.Property.#ctor|Property.Property().md|Property()
+M:GTC.Utilities.Property.#ctor(System.String,System.String)|Property.Property(string,string).md|Property(string, string)
+M:GTC.Utilities.Property.#ctor(System.String,System.Object)|Property.Property(string,object).md|Property(string, object)
+M:GTC.Utilities.Property.#ctor(System.String,System.String,System.Type)|Property.Property(string,string,Type).md|Property(string, string, Type)
+M:GTC.Utilities.Property.#ctor(System.String,System.String,System.Boolean)|Property.Property(string,string,bool).md|Property(string, string, bool)
+M:GTC.Utilities.Property.#ctor(System.String,System.String,System.Type,System.Boolean)|Property.Property(string,string,Type,bool).md|Property(string, string, Type, bool)
+M:GTC.Utilities.Property.Clone|Property.Clone().md|Clone()
+M:GTC.Utilities.Property.GetPwdValue|Property.GetPwdValue().md|GetPwdValue()
+M:GTC.Utilities.Property.ShouldSerializeValue|Property.ShouldSerializeValue().md|ShouldSerializeValue()
+T:GTC.Utilities.Property|GTC.Utilities.md#GTC.Utilities.Property|Property

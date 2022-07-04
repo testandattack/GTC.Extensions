@@ -1,0 +1,12 @@
+{
+  "LinksBaseUrl": "https://github.com/testandattack/GTC.Extensions/blob/master/GTC.OpenApiUtilities/MarkDown/",
+  "LinksOutputFilePath": "MarkDown\\GTC.OpenApiUtilities.txt",
+  "GeneratedAccessModifiers": "Public,Protected,ProtectedInternal",
+  "Markdown": {
+    "IgnoreLineBreak": true,
+    "TableOfContentsModes": "IncludeKind,IncludeSummary"
+  },
+  "GeneratedPages": "Assembly,Members",
+  "AssemblyPageName": "GTC.OpenApiUtilities",
+  "FileNameFactory": "Name"
+}

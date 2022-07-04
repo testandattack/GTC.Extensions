@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>Geoff Gray</Authors>
+    <Description>A collection of utility methods for Microsoft's OpenApi Framework objects</Description>
+    <PackageTags />
+    <PackageProjectUrl>https://github.com/testandattack/GTC.Extensions</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/testandattack/GTC.Extensions</RepositoryUrl>
+    <PackageId>TestAndAttack.OpenApiUtilities</PackageId>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\Users\graygeol\source\repos\GTC.Extensions\GTC.OpenApiUtilities\MarkDown\GTC.OpenApiUtilities.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\graygeol\source\repos\GTC.Extensions\GTC.OpenApiUtilities\MarkDown\GTC.OpenApiUtilities.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DefaultDocumentation" Version="0.8.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Serilog" Version="2.10.0" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="TestAndAttack.Extensions" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="MarkDown\" />
+  </ItemGroup>
+
+</Project>
