@@ -135,6 +135,52 @@ namespace GTC.Extensions
             }
             return source.Substring(iCurrent, iEnd - iCurrent);
         }
+        #endregion
+
+        #region -- FindSubStrings -----
+        /// <summary>
+        /// Searches a string for all instances of substrings surrounded by a specific character
+        /// </summary>
+        /// <param name="source">The <c>string</c> to which this method is exposed.</param>
+        /// <param name="isSurroundedBy">the character that surrounds the substring to locate.</param>
+        public static List<string> FindSubStrings(this string source, char isSurroundedBy)
+        {
+            return source.FindSubStrings(isSurroundedBy, false);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="isSurroundedBy"></param>
+        /// <param name="parseNotSurroundedBy"></param>
+        /// <returns></returns>
+        public static List<string> FindSubStrings(this string source, char isSurroundedBy, bool parseNotSurroundedBy)
+        {
+            char[] mainString = source.ToCharArray();
+
+            List<string> items = new List<string>();
+            bool startPositionAlreadyFound = parseNotSurroundedBy;
+            int startPosition = 0;
+
+            for (int x = 0; x < mainString.Length; x++)
+            {
+                if(mainString[x] == isSurroundedBy)
+                {
+                    if (startPositionAlreadyFound == false)
+                    {
+                        startPosition = x + 1;
+                        startPositionAlreadyFound = !startPositionAlreadyFound;
+                    }
+                    else
+                    {
+                        items.Add(source.Substring(startPosition, x - startPosition));
+                        startPositionAlreadyFound = !startPositionAlreadyFound;    
+                    }
+                }
+            }
+            return items;
+        }
 
         /// <summary>
         /// Searches a string for all instances of a substring, using the <see cref="FindSubString(string, string, string)"/>

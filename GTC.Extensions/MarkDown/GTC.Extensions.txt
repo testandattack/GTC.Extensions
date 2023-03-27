@@ -50,6 +50,8 @@ M:GTC.Extensions.StringExtensions.FindSubString(System.String,System.String,Syst
 M:GTC.Extensions.StringExtensions.FindSubString(System.String,System.String,System.String,System.Int32,System.StringComparison)|StringExtensions.FindSubString(thisstring,string,string,int,StringComparison).md|FindSubString(this string, string, string, int, StringComparison)
 M:GTC.Extensions.StringExtensions.FindSubString(System.String,System.String,System.String,System.Int32,System.Int32@)|StringExtensions.FindSubString(thisstring,string,string,int,int).md|FindSubString(this string, string, string, int, int)
 M:GTC.Extensions.StringExtensions.FindSubString(System.String,System.String,System.String,System.Int32,System.StringComparison,System.Int32@,System.Boolean)|StringExtensions.FindSubString(thisstring,string,string,int,StringComparison,int,bool).md|FindSubString(this string, string, string, int, StringComparison, int, bool)
+M:GTC.Extensions.StringExtensions.FindSubStrings(System.String,System.Char)|StringExtensions.FindSubStrings(thisstring,char).md|FindSubStrings(this string, char)
+M:GTC.Extensions.StringExtensions.FindSubStrings(System.String,System.Char,System.Boolean)|StringExtensions.FindSubStrings(thisstring,char,bool).md|FindSubStrings(this string, char, bool)
 M:GTC.Extensions.StringExtensions.FindSubStrings(System.String,System.String,System.String)|StringExtensions.FindSubStrings(thisstring,string,string).md|FindSubStrings(this string, string, string)
 M:GTC.Extensions.StringExtensions.IsBoolean(System.String)|StringExtensions.IsBoolean(thisstring).md|IsBoolean(this string)
 M:GTC.Extensions.StringExtensions.IsNumeric(System.String)|StringExtensions.IsNumeric(thisstring).md|IsNumeric(this string)

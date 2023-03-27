@@ -1,0 +1,1662 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+  <info postman_id='cbf0363f-1845-498d-8dac-30d1c0c3a52b'>
+    <name>Swagger Petstore</name>
+    <description>This is a sample server Petstore server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).  For this sample, you can use the api key `special-key` to test the authorization filters.Contact Support: Email: apiteam@swagger.io</description>
+    <schema>https://schema.getpostman.com/json/collection/v2.1.0/collection.json</schema>
+  </info>
+  <item>
+    <name>pet</name>
+    <item>
+      <name>{pet Id}</name>
+      <item>
+        <name>Find pet by ID</name>
+        <request>
+          <auth>
+            <type>apikey</type>
+            <apikey>
+              <key>key</key>
+              <value>api_key</value>
+              <type>string</type>
+            </apikey>
+            <apikey>
+              <key>value</key>
+              <value>&lt;API Key&gt;</value>
+              <type>string</type>
+            </apikey>
+            <apikey>
+              <key>in</key>
+              <value>header</value>
+              <type>string</type>
+            </apikey>
+          </auth>
+          <method>GET</method>
+          <header>
+            <key>Accept</key>
+            <value>application/json</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/:petId</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>:petId</path>
+            <variable>
+              <key>petId</key>
+              <value>&lt;long&gt;</value>
+              <description>(Required) ID of pet to return</description>
+            </variable>
+          </url>
+          <description>Returns a single pet</description>
+        </request>
+        <response postman_previewlanguage='json'>
+          <name>successful operation</name>
+          <originalRequest>
+            <method>GET</method>
+            <header>
+              <description>Added as a part of security scheme: apikey</description>
+              <key>api_key</key>
+              <value>&lt;API Key&gt;</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet to return</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>OK</status>
+          <code>200</code>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <cookie/>
+          <body>{  &#x27;name&#x27;: &#x27;doggie&#x27;,  &#x27;photoUrls&#x27;: [    &#x27;{string}&#x27;,    &#x27;{string}&#x27;  ],  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;category&#x27;: {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;name&#x27;: &#x27;{string}&#x27;  },  &#x27;tags&#x27;: [    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    }  ],  &#x27;status&#x27;: &#x27;{string}&#x27;}</body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Pet not found</name>
+          <originalRequest>
+            <method>GET</method>
+            <header>
+              <description>Added as a part of security scheme: apikey</description>
+              <key>api_key</key>
+              <value>&lt;API Key&gt;</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet to return</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Not Found</status>
+          <code>404</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Invalid ID supplied</name>
+          <originalRequest>
+            <method>GET</method>
+            <header>
+              <description>Added as a part of security scheme: apikey</description>
+              <key>api_key</key>
+              <value>&lt;API Key&gt;</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet to return</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+      <item>
+        <name>Updates a pet in the store with form data</name>
+        <request>
+          <auth>
+            <type>oauth2</type>
+          </auth>
+          <method>POST</method>
+          <header>
+            <key>Content-Type</key>
+            <value>application/x-www-form-urlencoded</value>
+          </header>
+          <body>
+            <mode>urlencoded</mode>
+            <urlencoded>
+              <key>name</key>
+              <value>&lt;string&gt;</value>
+              <description>Updated name of the pet</description>
+            </urlencoded>
+            <urlencoded>
+              <key>status</key>
+              <value>&lt;string&gt;</value>
+              <description>Updated status of the pet</description>
+            </urlencoded>
+          </body>
+          <url>
+            <raw>{{baseUrl}}/pet/:petId</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>:petId</path>
+            <variable>
+              <key>petId</key>
+              <value>&lt;long&gt;</value>
+              <description>(Required) ID of pet that needs to be updated</description>
+            </variable>
+          </url>
+        </request>
+        <response postman_previewlanguage='text'>
+          <name>Invalid input</name>
+          <originalRequest>
+            <method>POST</method>
+            <header>
+              <description>Added as a part of security scheme: oauth2</description>
+              <key>Authorization</key>
+              <value>&lt;token&gt;</value>
+            </header>
+            <body>
+              <mode>urlencoded</mode>
+              <urlencoded>
+                <key>name</key>
+                <value>&lt;string&gt;</value>
+                <description>Updated name of the pet</description>
+              </urlencoded>
+              <urlencoded>
+                <key>status</key>
+                <value>&lt;string&gt;</value>
+                <description>Updated status of the pet</description>
+              </urlencoded>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet that needs to be updated</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Method Not Allowed</status>
+          <code>405</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+      <item>
+        <name>Deletes a pet</name>
+        <request>
+          <auth>
+            <type>oauth2</type>
+          </auth>
+          <method>DELETE</method>
+          <header>
+            <key>api_key</key>
+            <value>&lt;string&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/:petId</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>:petId</path>
+            <variable>
+              <key>petId</key>
+              <value>&lt;long&gt;</value>
+              <description>(Required) Pet id to delete</description>
+            </variable>
+          </url>
+        </request>
+        <response postman_previewlanguage='text'>
+          <name>Pet not found</name>
+          <originalRequest>
+            <method>DELETE</method>
+            <header>
+              <description>Added as a part of security scheme: oauth2</description>
+              <key>Authorization</key>
+              <value>&lt;token&gt;</value>
+            </header>
+            <header>
+              <key>api_key</key>
+              <value>&lt;string&gt;</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) Pet id to delete</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Not Found</status>
+          <code>404</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Invalid ID supplied</name>
+          <originalRequest>
+            <method>DELETE</method>
+            <header>
+              <description>Added as a part of security scheme: oauth2</description>
+              <key>Authorization</key>
+              <value>&lt;token&gt;</value>
+            </header>
+            <header>
+              <key>api_key</key>
+              <value>&lt;string&gt;</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) Pet id to delete</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+      <item>
+        <name>uploads an image</name>
+        <request>
+          <auth>
+            <type>oauth2</type>
+          </auth>
+          <method>POST</method>
+          <header>
+            <key>Content-Type</key>
+            <value>multipart/form-data</value>
+          </header>
+          <header>
+            <key>Accept</key>
+            <value>application/json</value>
+          </header>
+          <body>
+            <mode>formdata</mode>
+            <formdata>
+              <key>additionalMetadata</key>
+              <value>&lt;string&gt;</value>
+              <description>Additional data to pass to server</description>
+              <type>text</type>
+            </formdata>
+            <formdata>
+              <key>file</key>
+              <description>file to upload</description>
+              <type>file</type>
+              <src/>
+            </formdata>
+          </body>
+          <url>
+            <raw>{{baseUrl}}/pet/:petId/uploadImage</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>:petId</path>
+            <path>uploadImage</path>
+            <variable>
+              <key>petId</key>
+              <value>&lt;long&gt;</value>
+              <description>(Required) ID of pet to update</description>
+            </variable>
+          </url>
+        </request>
+        <response postman_previewlanguage='json'>
+          <name>successful operation</name>
+          <originalRequest>
+            <method>POST</method>
+            <header>
+              <description>Added as a part of security scheme: oauth2</description>
+              <key>Authorization</key>
+              <value>&lt;token&gt;</value>
+            </header>
+            <body>
+              <mode>formdata</mode>
+              <formdata>
+                <key>additionalMetadata</key>
+                <value>&lt;string&gt;</value>
+                <description>Additional data to pass to server</description>
+                <type>text</type>
+              </formdata>
+              <formdata>
+                <key>file</key>
+                <value>&lt;binary&gt;</value>
+                <description>file to upload</description>
+                <type>text</type>
+              </formdata>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/pet/:petId/uploadImage</raw>
+              <host>{{baseUrl}}</host>
+              <path>pet</path>
+              <path>:petId</path>
+              <path>uploadImage</path>
+              <variable>
+                <key>petId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet to update</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>OK</status>
+          <code>200</code>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <cookie/>
+          <body>{  &#x27;code&#x27;: -98858955,  &#x27;type&#x27;: &#x27;magna in&#x27;,  &#x27;message&#x27;: &#x27;ir&#x27;}</body>
+        </response>
+      </item>
+    </item>
+    <item>
+      <name>Add a new pet to the store</name>
+      <request>
+        <auth>
+          <type>oauth2</type>
+        </auth>
+        <method>POST</method>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <body>
+          <mode>raw</mode>
+          <raw>{  &#x27;name&#x27;: &#x27;{string}&#x27;,  &#x27;photoUrls&#x27;: [    &#x27;{string}&#x27;,    &#x27;{string}&#x27;  ],  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;category&#x27;: {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;name&#x27;: &#x27;{string}&#x27;  },  &#x27;tags&#x27;: [    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    }  ],  &#x27;status&#x27;: &#x27;{string}&#x27;}</raw>
+          <options>
+            <raw>
+              <language>json</language>
+            </raw>
+          </options>
+        </body>
+        <url>
+          <raw>{{baseUrl}}/pet</raw>
+          <host>{{baseUrl}}</host>
+          <path>pet</path>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>Invalid input</name>
+        <originalRequest>
+          <method>POST</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+          </url>
+        </originalRequest>
+        <status>Method Not Allowed</status>
+        <code>405</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+    <item>
+      <name>Update an existing pet</name>
+      <request>
+        <auth>
+          <type>oauth2</type>
+        </auth>
+        <method>PUT</method>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <body>
+          <mode>raw</mode>
+          <raw>{  &#x27;name&#x27;: &#x27;{string}&#x27;,  &#x27;photoUrls&#x27;: [    &#x27;{string}&#x27;,    &#x27;{string}&#x27;  ],  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;category&#x27;: {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;name&#x27;: &#x27;{string}&#x27;  },  &#x27;tags&#x27;: [    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    }  ],  &#x27;status&#x27;: &#x27;{string}&#x27;}</raw>
+          <options>
+            <raw>
+              <language>json</language>
+            </raw>
+          </options>
+        </body>
+        <url>
+          <raw>{{baseUrl}}/pet</raw>
+          <host>{{baseUrl}}</host>
+          <path>pet</path>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>Invalid ID supplied</name>
+        <originalRequest>
+          <method>PUT</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+          </url>
+        </originalRequest>
+        <status>Bad Request</status>
+        <code>400</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+      <response postman_previewlanguage='text'>
+        <name>Validation exception</name>
+        <originalRequest>
+          <method>PUT</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+          </url>
+        </originalRequest>
+        <status>Method Not Allowed</status>
+        <code>405</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+      <response postman_previewlanguage='text'>
+        <name>Pet not found</name>
+        <originalRequest>
+          <method>PUT</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+          </url>
+        </originalRequest>
+        <status>Not Found</status>
+        <code>404</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+    <item>
+      <name>Finds Pets by status</name>
+      <request>
+        <auth>
+          <type>oauth2</type>
+        </auth>
+        <method>GET</method>
+        <header>
+          <key>Accept</key>
+          <value>application/json</value>
+        </header>
+        <url>
+          <raw>{{baseUrl}}/pet/findByStatus?status=available&amp;status=available</raw>
+          <host>{{baseUrl}}</host>
+          <path>pet</path>
+          <path>findByStatus</path>
+          <query>
+            <key>status</key>
+            <value>available</value>
+            <description>(Required) Status values that need to be considered for filter</description>
+          </query>
+          <query>
+            <key>status</key>
+            <value>available</value>
+            <description>(Required) Status values that need to be considered for filter</description>
+          </query>
+        </url>
+        <description>Multiple status values can be provided with comma separated strings</description>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>Invalid status value</name>
+        <originalRequest>
+          <method>GET</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/findByStatus?status=available&amp;status=available</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>findByStatus</path>
+            <query>
+              <key>status</key>
+              <value>available</value>
+            </query>
+            <query>
+              <key>status</key>
+              <value>available</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>Bad Request</status>
+        <code>400</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+      <response postman_previewlanguage='json'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>GET</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/findByStatus?status=available&amp;status=available</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>findByStatus</path>
+            <query>
+              <key>status</key>
+              <value>available</value>
+            </query>
+            <query>
+              <key>status</key>
+              <value>available</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>OK</status>
+        <code>200</code>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <cookie/>
+        <body>[  {    &#x27;name&#x27;: &#x27;doggie&#x27;,    &#x27;photoUrls&#x27;: [      &#x27;{string}&#x27;,      &#x27;{string}&#x27;    ],    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;category&#x27;: {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    &#x27;tags&#x27;: [      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      },      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      }    ],    &#x27;status&#x27;: &#x27;{string}&#x27;  },  {    &#x27;name&#x27;: &#x27;doggie&#x27;,    &#x27;photoUrls&#x27;: [      &#x27;{string}&#x27;,      &#x27;{string}&#x27;    ],    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;category&#x27;: {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    &#x27;tags&#x27;: [      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      },      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      }    ],    &#x27;status&#x27;: &#x27;{string}&#x27;  }]</body>
+      </response>
+    </item>
+    <item>
+      <name>Finds Pets by tags</name>
+      <request>
+        <auth>
+          <type>oauth2</type>
+        </auth>
+        <method>GET</method>
+        <header>
+          <key>Accept</key>
+          <value>application/json</value>
+        </header>
+        <url>
+          <raw>{{baseUrl}}/pet/findByTags?tags=&lt;string&gt;&amp;tags=&lt;string&gt;</raw>
+          <host>{{baseUrl}}</host>
+          <path>pet</path>
+          <path>findByTags</path>
+          <query>
+            <key>tags</key>
+            <value>&lt;string&gt;</value>
+            <description>(Required) Tags to filter by</description>
+          </query>
+          <query>
+            <key>tags</key>
+            <value>&lt;string&gt;</value>
+            <description>(Required) Tags to filter by</description>
+          </query>
+        </url>
+        <description>Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.</description>
+      </request>
+      <response postman_previewlanguage='json'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>GET</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/findByTags?tags=&lt;string&gt;&amp;tags=&lt;string&gt;</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>findByTags</path>
+            <query>
+              <key>tags</key>
+              <value>&lt;string&gt;</value>
+            </query>
+            <query>
+              <key>tags</key>
+              <value>&lt;string&gt;</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>OK</status>
+        <code>200</code>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <cookie/>
+        <body>[  {    &#x27;name&#x27;: &#x27;doggie&#x27;,    &#x27;photoUrls&#x27;: [      &#x27;{string}&#x27;,      &#x27;{string}&#x27;    ],    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;category&#x27;: {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    &#x27;tags&#x27;: [      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      },      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      }    ],    &#x27;status&#x27;: &#x27;{string}&#x27;  },  {    &#x27;name&#x27;: &#x27;doggie&#x27;,    &#x27;photoUrls&#x27;: [      &#x27;{string}&#x27;,      &#x27;{string}&#x27;    ],    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;category&#x27;: {      &#x27;id&#x27;: &#x27;{long}&#x27;,      &#x27;name&#x27;: &#x27;{string}&#x27;    },    &#x27;tags&#x27;: [      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      },      {        &#x27;id&#x27;: &#x27;{long}&#x27;,        &#x27;name&#x27;: &#x27;{string}&#x27;      }    ],    &#x27;status&#x27;: &#x27;{string}&#x27;  }]</body>
+      </response>
+      <response postman_previewlanguage='text'>
+        <name>Invalid tag value</name>
+        <originalRequest>
+          <method>GET</method>
+          <header>
+            <description>Added as a part of security scheme: oauth2</description>
+            <key>Authorization</key>
+            <value>&lt;token&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/pet/findByTags?tags=&lt;string&gt;&amp;tags=&lt;string&gt;</raw>
+            <host>{{baseUrl}}</host>
+            <path>pet</path>
+            <path>findByTags</path>
+            <query>
+              <key>tags</key>
+              <value>&lt;string&gt;</value>
+            </query>
+            <query>
+              <key>tags</key>
+              <value>&lt;string&gt;</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>Bad Request</status>
+        <code>400</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+  </item>
+  <item>
+    <name>store</name>
+    <item>
+      <name>order</name>
+      <item>
+        <name>{order Id}</name>
+        <item>
+          <name>Find purchase order by ID</name>
+          <request>
+            <method>GET</method>
+            <header>
+              <key>Accept</key>
+              <value>application/json</value>
+            </header>
+            <url>
+              <raw>{{baseUrl}}/store/order/:orderId</raw>
+              <host>{{baseUrl}}</host>
+              <path>store</path>
+              <path>order</path>
+              <path>:orderId</path>
+              <variable>
+                <key>orderId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of pet that needs to be fetched</description>
+              </variable>
+            </url>
+            <description>For valid response try integer IDs with value &gt;= 1 and &lt;= 10. Other values will generated exceptions</description>
+          </request>
+          <response postman_previewlanguage='text'>
+            <name>Order not found</name>
+            <originalRequest>
+              <method>GET</method>
+              <header/>
+              <url>
+                <raw>{{baseUrl}}/store/order/:orderId</raw>
+                <host>{{baseUrl}}</host>
+                <path>store</path>
+                <path>order</path>
+                <path>:orderId</path>
+                <variable>
+                  <key>orderId</key>
+                  <value>&lt;long&gt;</value>
+                  <description>(Required) ID of pet that needs to be fetched</description>
+                </variable>
+              </url>
+            </originalRequest>
+            <status>Not Found</status>
+            <code>404</code>
+            <header>
+              <key>Content-Type</key>
+              <value>text/plain</value>
+            </header>
+            <cookie/>
+            <body></body>
+          </response>
+          <response postman_previewlanguage='text'>
+            <name>Invalid ID supplied</name>
+            <originalRequest>
+              <method>GET</method>
+              <header/>
+              <url>
+                <raw>{{baseUrl}}/store/order/:orderId</raw>
+                <host>{{baseUrl}}</host>
+                <path>store</path>
+                <path>order</path>
+                <path>:orderId</path>
+                <variable>
+                  <key>orderId</key>
+                  <value>&lt;long&gt;</value>
+                  <description>(Required) ID of pet that needs to be fetched</description>
+                </variable>
+              </url>
+            </originalRequest>
+            <status>Bad Request</status>
+            <code>400</code>
+            <header>
+              <key>Content-Type</key>
+              <value>text/plain</value>
+            </header>
+            <cookie/>
+            <body></body>
+          </response>
+          <response postman_previewlanguage='json'>
+            <name>successful operation</name>
+            <originalRequest>
+              <method>GET</method>
+              <header/>
+              <url>
+                <raw>{{baseUrl}}/store/order/:orderId</raw>
+                <host>{{baseUrl}}</host>
+                <path>store</path>
+                <path>order</path>
+                <path>:orderId</path>
+                <variable>
+                  <key>orderId</key>
+                  <value>&lt;long&gt;</value>
+                  <description>(Required) ID of pet that needs to be fetched</description>
+                </variable>
+              </url>
+            </originalRequest>
+            <status>OK</status>
+            <code>200</code>
+            <header>
+              <key>Content-Type</key>
+              <value>application/json</value>
+            </header>
+            <cookie/>
+            <body>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;petId&#x27;: &#x27;{long}&#x27;,  &#x27;quantity&#x27;: &#x27;{integer}&#x27;,  &#x27;shipDate&#x27;: &#x27;{dateTime}&#x27;,  &#x27;status&#x27;: &#x27;{string}&#x27;,  &#x27;complete&#x27;: &#x27;{boolean}&#x27;}</body>
+          </response>
+        </item>
+        <item>
+          <name>Delete purchase order by ID</name>
+          <request>
+            <method>DELETE</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/store/order/:orderId</raw>
+              <host>{{baseUrl}}</host>
+              <path>store</path>
+              <path>order</path>
+              <path>:orderId</path>
+              <variable>
+                <key>orderId</key>
+                <value>&lt;long&gt;</value>
+                <description>(Required) ID of the order that needs to be deleted</description>
+              </variable>
+            </url>
+            <description>For valid response try integer IDs with positive integer value. Negative or non-integer values will generate API errors</description>
+          </request>
+          <response postman_previewlanguage='text'>
+            <name>Invalid ID supplied</name>
+            <originalRequest>
+              <method>DELETE</method>
+              <header/>
+              <url>
+                <raw>{{baseUrl}}/store/order/:orderId</raw>
+                <host>{{baseUrl}}</host>
+                <path>store</path>
+                <path>order</path>
+                <path>:orderId</path>
+                <variable>
+                  <key>orderId</key>
+                  <value>&lt;long&gt;</value>
+                  <description>(Required) ID of the order that needs to be deleted</description>
+                </variable>
+              </url>
+            </originalRequest>
+            <status>Bad Request</status>
+            <code>400</code>
+            <header>
+              <key>Content-Type</key>
+              <value>text/plain</value>
+            </header>
+            <cookie/>
+            <body></body>
+          </response>
+          <response postman_previewlanguage='text'>
+            <name>Order not found</name>
+            <originalRequest>
+              <method>DELETE</method>
+              <header/>
+              <url>
+                <raw>{{baseUrl}}/store/order/:orderId</raw>
+                <host>{{baseUrl}}</host>
+                <path>store</path>
+                <path>order</path>
+                <path>:orderId</path>
+                <variable>
+                  <key>orderId</key>
+                  <value>&lt;long&gt;</value>
+                  <description>(Required) ID of the order that needs to be deleted</description>
+                </variable>
+              </url>
+            </originalRequest>
+            <status>Not Found</status>
+            <code>404</code>
+            <header>
+              <key>Content-Type</key>
+              <value>text/plain</value>
+            </header>
+            <cookie/>
+            <body></body>
+          </response>
+        </item>
+      </item>
+      <item>
+        <name>Place an order for a pet</name>
+        <request>
+          <method>POST</method>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <header>
+            <key>Accept</key>
+            <value>application/json</value>
+          </header>
+          <body>
+            <mode>raw</mode>
+            <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;petId&#x27;: &#x27;{long}&#x27;,  &#x27;quantity&#x27;: &#x27;{integer}&#x27;,  &#x27;shipDate&#x27;: &#x27;{dateTime}&#x27;,  &#x27;status&#x27;: &#x27;{string}&#x27;,  &#x27;complete&#x27;: &#x27;{boolean}&#x27;}</raw>
+            <options>
+              <raw>
+                <language>json</language>
+              </raw>
+            </options>
+          </body>
+          <url>
+            <raw>{{baseUrl}}/store/order</raw>
+            <host>{{baseUrl}}</host>
+            <path>store</path>
+            <path>order</path>
+          </url>
+        </request>
+        <response postman_previewlanguage='json'>
+          <name>successful operation</name>
+          <originalRequest>
+            <method>POST</method>
+            <header/>
+            <body>
+              <mode>raw</mode>
+              <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;petId&#x27;: &#x27;{long}&#x27;,  &#x27;quantity&#x27;: &#x27;{integer}&#x27;,  &#x27;shipDate&#x27;: &#x27;{dateTime}&#x27;,  &#x27;status&#x27;: &#x27;{string}&#x27;,  &#x27;complete&#x27;: &#x27;{boolean}&#x27;}</raw>
+              <options>
+                <raw>
+                  <language>json</language>
+                </raw>
+              </options>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/store/order</raw>
+              <host>{{baseUrl}}</host>
+              <path>store</path>
+              <path>order</path>
+            </url>
+          </originalRequest>
+          <status>OK</status>
+          <code>200</code>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <cookie/>
+          <body>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;petId&#x27;: &#x27;{long}&#x27;,  &#x27;quantity&#x27;: &#x27;{integer}&#x27;,  &#x27;shipDate&#x27;: &#x27;{dateTime}&#x27;,  &#x27;status&#x27;: &#x27;{string}&#x27;,  &#x27;complete&#x27;: &#x27;{boolean}&#x27;}</body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Invalid Order</name>
+          <originalRequest>
+            <method>POST</method>
+            <header/>
+            <body>
+              <mode>raw</mode>
+              <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;petId&#x27;: &#x27;{long}&#x27;,  &#x27;quantity&#x27;: &#x27;{integer}&#x27;,  &#x27;shipDate&#x27;: &#x27;{dateTime}&#x27;,  &#x27;status&#x27;: &#x27;{string}&#x27;,  &#x27;complete&#x27;: &#x27;{boolean}&#x27;}</raw>
+              <options>
+                <raw>
+                  <language>json</language>
+                </raw>
+              </options>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/store/order</raw>
+              <host>{{baseUrl}}</host>
+              <path>store</path>
+              <path>order</path>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+    </item>
+    <item>
+      <name>Returns pet inventories by status</name>
+      <request>
+        <auth>
+          <type>apikey</type>
+          <apikey>
+            <key>key</key>
+            <value>api_key</value>
+            <type>string</type>
+          </apikey>
+          <apikey>
+            <key>value</key>
+            <value>&lt;API Key&gt;</value>
+            <type>string</type>
+          </apikey>
+          <apikey>
+            <key>in</key>
+            <value>header</value>
+            <type>string</type>
+          </apikey>
+        </auth>
+        <method>GET</method>
+        <header>
+          <key>Accept</key>
+          <value>application/json</value>
+        </header>
+        <url>
+          <raw>{{baseUrl}}/store/inventory</raw>
+          <host>{{baseUrl}}</host>
+          <path>store</path>
+          <path>inventory</path>
+        </url>
+        <description>Returns a map of status codes to quantities</description>
+      </request>
+      <response postman_previewlanguage='json'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>GET</method>
+          <header>
+            <description>Added as a part of security scheme: apikey</description>
+            <key>api_key</key>
+            <value>&lt;API Key&gt;</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/store/inventory</raw>
+            <host>{{baseUrl}}</host>
+            <path>store</path>
+            <path>inventory</path>
+          </url>
+        </originalRequest>
+        <status>OK</status>
+        <code>200</code>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <cookie/>
+        <body>{  &#x27;voluptate_14&#x27;: -14282299,  &#x27;ex_e7&#x27;: 8186221}</body>
+      </response>
+    </item>
+  </item>
+  <item>
+    <name>user</name>
+    <item>
+      <name>{username}</name>
+      <item>
+        <name>Get user by user name</name>
+        <request>
+          <method>GET</method>
+          <header>
+            <key>Accept</key>
+            <value>application/json</value>
+          </header>
+          <url>
+            <raw>{{baseUrl}}/user/:username</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>:username</path>
+            <variable>
+              <key>username</key>
+              <value>&lt;string&gt;</value>
+              <description>(Required) The name that needs to be fetched. Use user1 for testing. </description>
+            </variable>
+          </url>
+        </request>
+        <response postman_previewlanguage='json'>
+          <name>successful operation</name>
+          <originalRequest>
+            <method>GET</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) The name that needs to be fetched. Use user1 for testing. </description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>OK</status>
+          <code>200</code>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <cookie/>
+          <body>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Invalid username supplied</name>
+          <originalRequest>
+            <method>GET</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) The name that needs to be fetched. Use user1 for testing. </description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>User not found</name>
+          <originalRequest>
+            <method>GET</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) The name that needs to be fetched. Use user1 for testing. </description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Not Found</status>
+          <code>404</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+      <item>
+        <name>Updated user</name>
+        <request>
+          <method>PUT</method>
+          <header>
+            <key>Content-Type</key>
+            <value>application/json</value>
+          </header>
+          <body>
+            <mode>raw</mode>
+            <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</raw>
+            <options>
+              <raw>
+                <language>json</language>
+              </raw>
+            </options>
+          </body>
+          <url>
+            <raw>{{baseUrl}}/user/:username</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>:username</path>
+            <variable>
+              <key>username</key>
+              <value>&lt;string&gt;</value>
+              <description>(Required) name that need to be updated</description>
+            </variable>
+          </url>
+          <description>This can only be done by the logged in user.</description>
+        </request>
+        <response postman_previewlanguage='text'>
+          <name>User not found</name>
+          <originalRequest>
+            <method>PUT</method>
+            <header/>
+            <body>
+              <mode>raw</mode>
+              <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</raw>
+              <options>
+                <raw>
+                  <language>json</language>
+                </raw>
+              </options>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) name that need to be updated</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Not Found</status>
+          <code>404</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>Invalid user supplied</name>
+          <originalRequest>
+            <method>PUT</method>
+            <header/>
+            <body>
+              <mode>raw</mode>
+              <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</raw>
+              <options>
+                <raw>
+                  <language>json</language>
+                </raw>
+              </options>
+            </body>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) name that need to be updated</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+      <item>
+        <name>Delete user</name>
+        <request>
+          <method>DELETE</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/:username</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>:username</path>
+            <variable>
+              <key>username</key>
+              <value>&lt;string&gt;</value>
+              <description>(Required) The name that needs to be deleted</description>
+            </variable>
+          </url>
+          <description>This can only be done by the logged in user.</description>
+        </request>
+        <response postman_previewlanguage='text'>
+          <name>Invalid username supplied</name>
+          <originalRequest>
+            <method>DELETE</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) The name that needs to be deleted</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Bad Request</status>
+          <code>400</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+        <response postman_previewlanguage='text'>
+          <name>User not found</name>
+          <originalRequest>
+            <method>DELETE</method>
+            <header/>
+            <url>
+              <raw>{{baseUrl}}/user/:username</raw>
+              <host>{{baseUrl}}</host>
+              <path>user</path>
+              <path>:username</path>
+              <variable>
+                <key>username</key>
+                <value>&lt;string&gt;</value>
+                <description>(Required) The name that needs to be deleted</description>
+              </variable>
+            </url>
+          </originalRequest>
+          <status>Not Found</status>
+          <code>404</code>
+          <header>
+            <key>Content-Type</key>
+            <value>text/plain</value>
+          </header>
+          <cookie/>
+          <body></body>
+        </response>
+      </item>
+    </item>
+    <item>
+      <name>Create user</name>
+      <event>
+        <listen>prerequest</listen>
+        <script>
+          <exec>pm.environment.get(&#x27;variable_key&#x27;);</exec>
+          <exec>pm.sendRequest(&#x27;https://postman-echo.com/get&#x27;, function (err, response) {</exec>
+          <exec>    console.log(response.json());</exec>
+          <exec>});</exec>
+          <type>text/javascript</type>
+        </script>
+      </event>
+      <event>
+        <listen>test</listen>
+        <script>
+          <exec>pm.test(&#x27;Status code is 200&#x27;, function () {</exec>
+          <exec>    pm.response.to.have.status(200);</exec>
+          <exec>});</exec>
+          <type>text/javascript</type>
+        </script>
+      </event>
+      <protocolProfileBehavior>
+        <maxRedirects>3</maxRedirects>
+      </protocolProfileBehavior>
+      <request>
+        <method>POST</method>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <body>
+          <mode>raw</mode>
+          <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</raw>
+          <options>
+            <raw>
+              <language>json</language>
+            </raw>
+          </options>
+        </body>
+        <url>
+          <raw>{{baseUrl}}/user</raw>
+          <host>{{baseUrl}}</host>
+          <path>user</path>
+        </url>
+        <description>This can only be done by the logged in user.</description>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>POST</method>
+          <header/>
+          <body>
+            <mode>raw</mode>
+            <raw>{  &#x27;id&#x27;: &#x27;{long}&#x27;,  &#x27;username&#x27;: &#x27;{string}&#x27;,  &#x27;firstName&#x27;: &#x27;{string}&#x27;,  &#x27;lastName&#x27;: &#x27;{string}&#x27;,  &#x27;email&#x27;: &#x27;{string}&#x27;,  &#x27;password&#x27;: &#x27;{string}&#x27;,  &#x27;phone&#x27;: &#x27;{string}&#x27;,  &#x27;userStatus&#x27;: &#x27;{integer}&#x27;}</raw>
+            <options>
+              <raw>
+                <language>json</language>
+              </raw>
+            </options>
+          </body>
+          <url>
+            <raw>{{baseUrl}}/user</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+          </url>
+        </originalRequest>
+        <status>Internal Server Error</status>
+        <code>500</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+    <item>
+      <name>Creates list of users with given input array</name>
+      <request>
+        <method>POST</method>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <body>
+          <mode>raw</mode>
+          <raw>[  {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;username&#x27;: &#x27;{string}&#x27;,    &#x27;firstName&#x27;: &#x27;{string}&#x27;,    &#x27;lastName&#x27;: &#x27;{string}&#x27;,    &#x27;email&#x27;: &#x27;{string}&#x27;,    &#x27;password&#x27;: &#x27;{string}&#x27;,    &#x27;phone&#x27;: &#x27;{string}&#x27;,    &#x27;userStatus&#x27;: &#x27;{integer}&#x27;  },  {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;username&#x27;: &#x27;{string}&#x27;,    &#x27;firstName&#x27;: &#x27;{string}&#x27;,    &#x27;lastName&#x27;: &#x27;{string}&#x27;,    &#x27;email&#x27;: &#x27;{string}&#x27;,    &#x27;password&#x27;: &#x27;{string}&#x27;,    &#x27;phone&#x27;: &#x27;{string}&#x27;,    &#x27;userStatus&#x27;: &#x27;{integer}&#x27;  }]</raw>
+          <options>
+            <raw>
+              <language>json</language>
+            </raw>
+          </options>
+        </body>
+        <url>
+          <raw>{{baseUrl}}/user/createWithArray</raw>
+          <host>{{baseUrl}}</host>
+          <path>user</path>
+          <path>createWithArray</path>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>POST</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/createWithArray</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>createWithArray</path>
+          </url>
+        </originalRequest>
+        <status>Internal Server Error</status>
+        <code>500</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+    <item>
+      <name>Creates list of users with given input array</name>
+      <request>
+        <method>POST</method>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <body>
+          <mode>raw</mode>
+          <raw>[  {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;username&#x27;: &#x27;{string}&#x27;,    &#x27;firstName&#x27;: &#x27;{string}&#x27;,    &#x27;lastName&#x27;: &#x27;{string}&#x27;,    &#x27;email&#x27;: &#x27;{string}&#x27;,    &#x27;password&#x27;: &#x27;{string}&#x27;,    &#x27;phone&#x27;: &#x27;{string}&#x27;,    &#x27;userStatus&#x27;: &#x27;{integer}&#x27;  },  {    &#x27;id&#x27;: &#x27;{long}&#x27;,    &#x27;username&#x27;: &#x27;{string}&#x27;,    &#x27;firstName&#x27;: &#x27;{string}&#x27;,    &#x27;lastName&#x27;: &#x27;{string}&#x27;,    &#x27;email&#x27;: &#x27;{string}&#x27;,    &#x27;password&#x27;: &#x27;{string}&#x27;,    &#x27;phone&#x27;: &#x27;{string}&#x27;,    &#x27;userStatus&#x27;: &#x27;{integer}&#x27;  }]</raw>
+          <options>
+            <raw>
+              <language>json</language>
+            </raw>
+          </options>
+        </body>
+        <url>
+          <raw>{{baseUrl}}/user/createWithList</raw>
+          <host>{{baseUrl}}</host>
+          <path>user</path>
+          <path>createWithList</path>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>POST</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/createWithList</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>createWithList</path>
+          </url>
+        </originalRequest>
+        <status>Internal Server Error</status>
+        <code>500</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+    <item>
+      <name>Logs user into the system</name>
+      <request>
+        <method>GET</method>
+        <header>
+          <key>Accept</key>
+          <value>application/json</value>
+        </header>
+        <url>
+          <raw>{{baseUrl}}/user/login?username=&lt;string&gt;&amp;password=&lt;string&gt;</raw>
+          <host>{{baseUrl}}</host>
+          <path>user</path>
+          <path>login</path>
+          <query>
+            <key>username</key>
+            <value>&lt;string&gt;</value>
+            <description>(Required) The user name for login</description>
+          </query>
+          <query>
+            <key>password</key>
+            <value>&lt;string&gt;</value>
+            <description>(Required) The password for login in clear text</description>
+          </query>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>Invalid username/password supplied</name>
+        <originalRequest>
+          <method>GET</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/login?username=&lt;string&gt;&amp;password=&lt;string&gt;</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>login</path>
+            <query>
+              <key>username</key>
+              <value>&lt;string&gt;</value>
+            </query>
+            <query>
+              <key>password</key>
+              <value>&lt;string&gt;</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>Bad Request</status>
+        <code>400</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+      <response postman_previewlanguage='json'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>GET</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/login?username=&lt;string&gt;&amp;password=&lt;string&gt;</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>login</path>
+            <query>
+              <key>username</key>
+              <value>&lt;string&gt;</value>
+            </query>
+            <query>
+              <key>password</key>
+              <value>&lt;string&gt;</value>
+            </query>
+          </url>
+        </originalRequest>
+        <status>OK</status>
+        <code>200</code>
+        <header>
+          <key>X-Expires-After</key>
+          <value>2014-01-22T09:29:26.874Z</value>
+          <description>date in UTC when token expires</description>
+        </header>
+        <header>
+          <key>X-Rate-Limit</key>
+          <value>97845336</value>
+          <description>calls per hour allowed by the user</description>
+        </header>
+        <header>
+          <key>Content-Type</key>
+          <value>application/json</value>
+        </header>
+        <cookie/>
+        <body>&#x27;minim elit ut&#x27;</body>
+      </response>
+    </item>
+    <item>
+      <name>Logs out current logged in user session</name>
+      <request>
+        <method>GET</method>
+        <header/>
+        <url>
+          <raw>{{baseUrl}}/user/logout</raw>
+          <host>{{baseUrl}}</host>
+          <path>user</path>
+          <path>logout</path>
+        </url>
+      </request>
+      <response postman_previewlanguage='text'>
+        <name>successful operation</name>
+        <originalRequest>
+          <method>GET</method>
+          <header/>
+          <url>
+            <raw>{{baseUrl}}/user/logout</raw>
+            <host>{{baseUrl}}</host>
+            <path>user</path>
+            <path>logout</path>
+          </url>
+        </originalRequest>
+        <status>Internal Server Error</status>
+        <code>500</code>
+        <header>
+          <key>Content-Type</key>
+          <value>text/plain</value>
+        </header>
+        <cookie/>
+        <body></body>
+      </response>
+    </item>
+  </item>
+  <variable>
+    <key>baseUrl</key>
+    <value>https://petstore.swagger.io/v2</value>
+    <type>string</type>
+  </variable>
+</root>
