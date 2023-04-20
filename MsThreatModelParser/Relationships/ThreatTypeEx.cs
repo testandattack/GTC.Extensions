@@ -15,6 +15,7 @@ namespace MsThreatModelParser
 
         public string Name { get; set; }
 
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Category { get; set; }
 
         public string includeStr { get; set; }

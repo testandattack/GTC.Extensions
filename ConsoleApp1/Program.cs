@@ -9,11 +9,13 @@ namespace ConsoleApp1
         {
             ManageKnowledgeBase mkb = new ManageKnowledgeBase();
 
-            mkb.Read("SampleTemplate.xml");
+            mkb.ReadKnowledgeBase("SampleTemplate.xml");
             mkb.PopulateExtendedModels();
-            mkb.relationships.BuildThreatListsForElements();
             mkb.relationships.SaveRelationships($"c:\\temp\\{mkb.knowledgeBase.Manifest.name}-Relationship.json");
             mkb.relationships.SaveAllIncludesAndExcludes($"c:\\temp\\{mkb.knowledgeBase.Manifest.name}-IncAndExc.json");
+
+            mkb.ReadThereatModel("SampleModel.xml");
+            Console.WriteLine("");
         }
 
     }

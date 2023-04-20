@@ -5,24 +5,62 @@ using GTC.Extensions;
 using Newtonsoft.Json;
 using System.Linq;
 using System.IO;
+using System.Text.RegularExpressions;
 
 namespace MsThreatModelParser
 {
     public class Relationships
     {
+        #region -- Properties -----
         public string TemplateName { get; set; }
 
-        public Dictionary<string, ThreatCategoryEx> threatCategories { get; set;}
+        public Summaries summaries { get; private set; }
+
+        public List<string> allElementIds { get; set; }
+
+        public List<string> elementsWithoutThreats { get; set; }
         
+        public List<string> elementsWithThreats { get; set; }
+
+        public List<string> threatsWithoutElementRelationships { get; set; }
+        
+        public List<string> threatsWithElementRelationships { get; set; }
+
+        public List<string> elementsWithGuidId { get; set; }
+
+        public List<string> threatIds { get; set; }
+
+        [JsonIgnore]
+        public Dictionary<string, int> allIncludeThreatFilterValues { get; set; }
+
+        [JsonIgnore]
+        public Dictionary<string, int> allExcludeThreatFilterValues { get; set; }
+
+        public List<KeyValuePair<string, int>> sorted_allIncludeThreatFilterValues { get; set; }
+
+        public List<KeyValuePair<string, int>> sorted_allExcludeThreatFilterValues { get; set; }
+
+        public Dictionary<string, ThreatCategoryEx> threatCategories { get; set; }
+
         public Dictionary<string, GenericElementEx> genericList { get; set; }
+        #endregion
 
-
-
+        #region -- Constructors -----
         public Relationships()
         {
             TemplateName = string.Empty;
             genericList = new Dictionary<string, GenericElementEx>();
             threatCategories = new Dictionary<string, ThreatCategoryEx>();
+            allElementIds = new List<string>();
+            elementsWithoutThreats = new List<string>();
+            elementsWithThreats = new List<string>();
+            threatsWithoutElementRelationships = new List<string>();
+            threatsWithElementRelationships = new List<string>();
+            elementsWithGuidId = new List<string>();
+            threatIds = new List<string>();
+            allIncludeThreatFilterValues = new Dictionary<string, int>();
+            allExcludeThreatFilterValues = new Dictionary<string, int>();
+            summaries = new Summaries();
         }
 
         public Relationships(KnowledgeBaseThreatCategory[] categories, string template)
@@ -30,8 +68,20 @@ namespace MsThreatModelParser
             TemplateName = template;
             genericList = new Dictionary<string, GenericElementEx>();
             threatCategories = new Dictionary<string, ThreatCategoryEx>();
+            allElementIds = new List<string>();
+            elementsWithoutThreats = new List<string>();
+            elementsWithThreats = new List<string>();
+            threatsWithoutElementRelationships = new List<string>();
+            threatsWithElementRelationships = new List<string>();
+            elementsWithGuidId = new List<string>();
+            threatIds = new List<string>();
+            allIncludeThreatFilterValues = new Dictionary<string, int>();
+            allExcludeThreatFilterValues = new Dictionary<string, int>();
+            summaries = new Summaries();
         }
+        #endregion
 
+        #region -- methods -----
         public void AddThreatCategory(KnowledgeBaseThreatCategory kbtc)
         {
             string sName = kbtc.Id;
@@ -42,6 +92,8 @@ namespace MsThreatModelParser
         public void AddThreat(KnowledgeBaseThreatType kbtt)
         {
             string sCategory = kbtt.Category;
+            threatIds.Add(kbtt.Id);
+
             if (threatCategories.ContainsKey(sCategory) == false)
             {
                 Console.WriteLine($"Error in AddThreat - Could not find category {sCategory}");
@@ -50,6 +102,11 @@ namespace MsThreatModelParser
             {
                 ThreatTypeEx ttex = new ThreatTypeEx(kbtt);
                 threatCategories[sCategory].AddThreatType(ttex);
+                summaries.threatCount++;
+                foreach(var includeFilter in ttex.includes)
+                    allIncludeThreatFilterValues.AddOrUpdateCount(includeFilter);
+                foreach (var excludeFilter in ttex.excludes)
+                    allExcludeThreatFilterValues.AddOrUpdateCount(excludeFilter);
             }
 
         }
@@ -59,6 +116,11 @@ namespace MsThreatModelParser
             string sName = kbet.ID;
             GenericElementEx geex = new GenericElementEx(kbet);
             genericList.Add(sName, geex);
+            summaries.genericElementCount++;
+            allElementIds.Add(sName);
+            if (Guid.TryParse(sName, out Guid sTemp) == true)
+                elementsWithGuidId.Add($"GENERIC: {sName}: {geex.Name}");
+
         }
 
         public void AddStandard(KnowledgeBaseElementType2 kbet2)
@@ -72,6 +134,10 @@ namespace MsThreatModelParser
             {
                 StandardElementEx seex = new StandardElementEx(kbet2);
                 genericList[parentName].AddStandardElement(seex);
+                summaries.standardElementCount++;
+                allElementIds.Add(seex.ID);
+                if (Guid.TryParse(seex.ID, out Guid sTemp) == true)
+                    elementsWithGuidId.Add($"STANDARD: {parentName} - {seex.ID}: {seex.Name}");
             }
         }
 
@@ -86,17 +152,18 @@ namespace MsThreatModelParser
                     {
                         if(threat.Value.includes.Contains(item.Key))
                         {
-                            var threatItem = new ThreatListItem(
-                                threat.Key,
-                                threat.Value.includeStr,
-                                threat.Value.excludeStr);
-                            item.Value.threatTypesTiedToThisElement.Add(threatItem);
+                            item.Value.threatTypesTiedToThisElement.Add(threat.Key);
                         }
                     }
                 }
+                if (item.Value.threatTypesTiedToThisElement.Count == 0)
+                    elementsWithoutThreats.Add($"GENERIC: {item.Key}");
+                else
+                    elementsWithThreats.Add($"GENERIC: {item.Key}");
+
 
                 // now handle all the standard entries inside the generic level
-                foreach(var element in item.Value.StandardElements)
+                foreach (var element in item.Value.StandardElements)
                 {
                     foreach (var category in threatCategories.Values)
                     {
@@ -104,20 +171,50 @@ namespace MsThreatModelParser
                         {
                             if (threat.Value.includes.Contains(element.Key))
                             {
-                                var threatItem = new ThreatListItem(
-                                    threat.Key,
-                                    threat.Value.includeStr,
-                                    threat.Value.excludeStr);
-                                element.Value.threatTypesTiedToThisElement.Add(threatItem);
+                                element.Value.threatTypesTiedToThisElement.Add(threat.Key);
                             }
                         }
                     }
+                    if (element.Value.threatTypesTiedToThisElement.Count == 0)
+                        elementsWithoutThreats.Add($"STANDARD: {item.Key} - {element.Key}");
+                    else
+                        elementsWithThreats.Add($"STANDARD: {item.Key} - {element.Key}");
+
+                }
+            }
+        }
+
+        public void BuildThreatsWithoutElementRelationships()
+        {
+            foreach(var category in threatCategories.Values)
+            {
+                foreach(var threat in category.threatTypes.Values)
+                {
+                    bool elementWasFound = false;
+                    foreach(string inc in threat.includes)
+                    {
+                        if (allElementIds.Contains(inc))
+                            elementWasFound = true;
+                    }
+                    if (elementWasFound == false)
+                        threatsWithoutElementRelationships.Add(threat.Name);
+                    else
+                        threatsWithElementRelationships.Add(threat.Name);
+
                 }
             }
         }
 
         public void SaveRelationships(string filename)
         {
+            allElementIds.Sort();
+            elementsWithoutThreats.Sort();
+            elementsWithThreats.Sort();
+            threatsWithoutElementRelationships.Sort();
+            threatsWithElementRelationships.Sort();
+            threatIds.Sort();
+            BuildSortedDictionaries();
+
             using (StreamWriter sw = new StreamWriter(filename, false))
             {
                 sw.Write(JsonConvert.SerializeObject(this, Formatting.Indented));
@@ -133,41 +230,51 @@ namespace MsThreatModelParser
                 sw.Write(JsonConvert.SerializeObject(i_and_e, Formatting.Indented));
             }
         }
-    }
 
-    public class IncAndExc
-    {
-        public List<string> includes { get; set; }
-        public List<string> excludes { get; set; }
-
-        public IncAndExc()
+        public void BuildSummaries()
         {
-            includes = new List<string>();
-            excludes = new List<string>();
+            summaries.allElementCount = allElementIds.Count;
+            summaries.elementsWithoutThreatsCount = elementsWithoutThreats.Count;
+            summaries.elementsWithThreatsCount = elementsWithThreats.Count;
+            summaries.threatsWithoutElementRelationshipsCount = threatsWithoutElementRelationships.Count;
+            summaries.threatsWithElementRelationshipsCount = threatsWithElementRelationships.Count;
         }
 
-        public IncAndExc(Dictionary<string, ThreatCategoryEx> threatCategories)
+        private void BuildSortedDictionaries()
         {
-            includes = new List<string>();
-            excludes = new List<string>();
+            sorted_allIncludeThreatFilterValues = allIncludeThreatFilterValues.AsEnumerable().OrderByDescending(v => v.Value).ToList();
+            sorted_allExcludeThreatFilterValues = allExcludeThreatFilterValues.AsEnumerable().OrderByDescending(v => v.Value).ToList();
+        }
+        #endregion
+    }
 
-            //List<string> tmpInc = new List<String>();
-            //List<string> tmpExc = new List<String>();
+    public class Summaries
+    {
+        public int threatCount { get; set; }
 
-            foreach(var category in threatCategories.Values)
-            {
-                foreach(var threat in category.threatTypes)
-                {
-                    if (String.IsNullOrEmpty(threat.Value.includeStr) == false
-                        && threat.Value.includeStr != " ")
-                        includes.Add(threat.Value.includeStr);
-                    if (String.IsNullOrEmpty(threat.Value.excludeStr) == false
-                        && threat.Value.excludeStr != " ")
-                        excludes.Add(threat.Value.excludeStr);
-                }
-            }
-            includes.Sort();
-            excludes.Sort();
+        public int genericElementCount { get; set; }
+
+        public int standardElementCount { get; set; }
+
+        public int allElementCount { get; set; }
+
+        public int elementsWithoutThreatsCount { get; set; }
+
+        public int elementsWithThreatsCount { get; set; }
+
+        public int threatsWithoutElementRelationshipsCount { get; set; }
+
+        public int threatsWithElementRelationshipsCount { get; set; }
+
+        public Summaries()
+        {
+            genericElementCount = 0;
+            standardElementCount = 0;
+            allElementCount = 0;
+            elementsWithoutThreatsCount = 0;
+            elementsWithThreatsCount = 0;
+            threatsWithoutElementRelationshipsCount = 0;
+            threatsWithElementRelationshipsCount = 0;
         }
     }
 

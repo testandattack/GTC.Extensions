@@ -12,12 +12,24 @@ namespace MsThreatModelParser
 
         public Relationships relationships { get; set; }
 
-        public void Read(string fileName)
+        public ThreatModel threatModel { get; set; }
+
+
+        public void ReadKnowledgeBase(string fileName)
         {
             XmlSerializer ser = new XmlSerializer(typeof(KnowledgeBase));
             using (XmlReader reader = XmlReader.Create(fileName))
             {
                 knowledgeBase = (KnowledgeBase)ser.Deserialize(reader);
+            }
+        }
+
+        public void ReadThereatModel(string fileName)
+        {
+            XmlSerializer ser = new XmlSerializer(typeof(ThreatModel));
+            using (XmlReader reader = XmlReader.Create(fileName))
+            {
+                threatModel = (ThreatModel)ser.Deserialize(reader);
             }
         }
 
@@ -45,7 +57,9 @@ namespace MsThreatModelParser
                 relationships.AddThreat(threatType);
             }
 
-            Console.WriteLine("");
+            relationships.BuildThreatListsForElements();
+            relationships.BuildThreatsWithoutElementRelationships();
+            relationships.BuildSummaries();
         }
     }
 }

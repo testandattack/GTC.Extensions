@@ -12,8 +12,10 @@ namespace MsThreatModelParser
     {
         public string threatId { get; set; }
 
+        [JsonIgnore]
         public string includeStr { get; set; }
 
+        [JsonIgnore]
         public string excludeStr { get; set; }
 
         public ThreatListItem() { }

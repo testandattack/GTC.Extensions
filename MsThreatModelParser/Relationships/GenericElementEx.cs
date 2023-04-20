@@ -21,7 +21,7 @@ namespace MsThreatModelParser
 
         public Dictionary<string, StandardElementEx> StandardElements { get; set; }
 
-        public List<ThreatListItem> threatTypesTiedToThisElement { get; set; }
+        public List<string> threatTypesTiedToThisElement { get; set; }
 
         public GenericElementEx()
         {
@@ -30,7 +30,7 @@ namespace MsThreatModelParser
             Name = string.Empty;
             Behavior = string.Empty;
             StandardElements = new Dictionary<string, StandardElementEx>();
-            threatTypesTiedToThisElement = new List<ThreatListItem>();
+            threatTypesTiedToThisElement = new List<string>();
         }
 
         public GenericElementEx(KnowledgeBaseElementType kbet)
@@ -40,7 +40,7 @@ namespace MsThreatModelParser
             Name = kbet.Name;
             Behavior = Behaviors.GetBehavior(kbet.Representation);
             StandardElements = new Dictionary<string, StandardElementEx>();
-            threatTypesTiedToThisElement = new List<ThreatListItem>();
+            threatTypesTiedToThisElement = new List<string>();
         }
 
         public void AddStandardElement(StandardElementEx elementEx)

@@ -16,7 +16,7 @@ namespace MsThreatModelParser
 
         public string Behavior { get; set; }
 
-        public List<ThreatListItem> threatTypesTiedToThisElement { get; set; }
+        public List<string> threatTypesTiedToThisElement { get; set; }
 
         [JsonIgnore]
         public KnowledgeBaseElementType2 standardElement { get; set; }
@@ -27,7 +27,7 @@ namespace MsThreatModelParser
             ID = string.Empty;
             Name = string.Empty;
             Behavior = string.Empty;
-            threatTypesTiedToThisElement = new List<ThreatListItem>();
+            threatTypesTiedToThisElement = new List<string>();
         }
 
         public StandardElementEx(KnowledgeBaseElementType2 kbet2)
@@ -36,7 +36,7 @@ namespace MsThreatModelParser
             ID = kbet2.ID;
             Name = kbet2.Name;
             Behavior = Behaviors.GetBehavior(kbet2.Representation);
-            threatTypesTiedToThisElement = new List<ThreatListItem>();
+            threatTypesTiedToThisElement = new List<string>();
         }
     }
 }

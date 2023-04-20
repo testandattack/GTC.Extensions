@@ -32,12 +32,12 @@ namespace MsThreatModelParser
 
         public void AddThreatType(ThreatTypeEx threat)
         {
-            if(threatTypes.ContainsKey(threat.Name) == true)
+            if(threatTypes.ContainsKey(threat.KnowledgeBaseThreatType.Id) == true)
             {
-                Console.WriteLine($"Found duplicate entry in ThreatTypes: {threat.Name}");
+                Console.WriteLine($"Found duplicate entry in ThreatTypes: {threat.KnowledgeBaseThreatType.Id}");
                 return;
             }
-            threatTypes.Add(threat.Name, threat);
+            threatTypes.Add(threat.KnowledgeBaseThreatType.Id, threat);
         }
     }
 }
